@@ -1,55 +1,41 @@
 package liste;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
-import apple.laf.JRSUIConstants.FrameOnly;
 
 public class SuiteChainee {
 
 	private MaListe maListe_;
 
 	public SuiteChainee(String operation, ArrayList<Integer> liste1, ArrayList<Integer> liste2) throws Exception{
+		
 		ArrayList<Integer> operationResult = new ArrayList<Integer>();
 
 		switch (operation) {
-
+		
 		case "union": 
-
 			operationResult = union(liste1, liste2);
-
 			break;
-
+			
 		case "intersection":
-
 			operationResult= intersection(liste1, liste2);
-
 			break;
-
+			
 		case "difference":
-
 			operationResult= difference(liste1, liste2);
-
 			break;
 
 		case "symmetric difference":
-
 			operationResult = symmetricDifference(liste1, liste2);
-
 			break;
 
 		case "is subset":
-
 			operationResult = isSubset(liste1, liste2);
-
 			break;
 
 		case "is superset":
-
 			operationResult = isSuperset(liste1, liste2);
-
 			break;
-
 
 		default :
 			throw new Exception("This operation is not suppported !"); 
@@ -59,8 +45,9 @@ public class SuiteChainee {
 		System.out.println(liste1);
 		System.out.println(liste2);
 		System.out.println(operationResult);
-
-
+		
+		//instantier la nouvelle liste qui contient les ensembles
+		maListe_ = new MaListe(liste1,liste2,operationResult);
 	}
 
 	/***

@@ -21,7 +21,7 @@ public class main {
 		
 		
        SuiteChainee test_suite = new SuiteChainee("is superset", liste1, liste2);
-       
+        test_suite.get().print();
 		System.out.println("end the prog");
 
        
