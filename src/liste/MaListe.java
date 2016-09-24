@@ -36,7 +36,8 @@ public class MaListe implements Liste {
 
 	@Override
 	public void removeItem(ArrayList<Integer> ensemble) {
-		liste_.removeAll(ensemble);
+		//liste_.removeAll(ensemble);
+		liste_.remove(ensemble);
 
 	}
 
