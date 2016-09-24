@@ -11,20 +11,16 @@ public class main {
 		ArrayList<Integer> liste2 = new ArrayList<Integer>();
 		
 		liste1.add(1);
-		liste1.add(1);
-		liste1.add(1);
-		liste1.add(6);
-		liste1.add(9);
+		liste1.add(2);
+		liste1.add(3);
+	
 		
 		liste2.add(1);
-		liste2.add(6);
-		liste2.add(2);
 		liste2.add(3);
-		liste2.add(9);
-		liste2.add(6);
+	
 		
 		
-       SuiteChainee test_suite = new SuiteChainee("union", liste1, liste2);
+       SuiteChainee test_suite = new SuiteChainee("is superset", liste1, liste2);
        
 		System.out.println("end the prog");
 

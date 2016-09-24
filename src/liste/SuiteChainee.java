@@ -166,17 +166,31 @@ public class SuiteChainee {
 
 	}
 	/**
-	 * 
+	 * liste 1 contient tous les elements de liste2 ou 
+	 *tous les elements de liste2 sont dans liste1
 	 * @param liste1
 	 * @param liste2
 	 */
-	private ArrayList<Integer>  isSuperset(ArrayList<Integer> liste1, ArrayList<Integer> liste2){
-
-
-		return null;
-
+	private ArrayList<Integer> isSuperset(ArrayList<Integer> liste1, ArrayList<Integer> liste2) {
+		//remvove all duplicates items in 
+		liste1 = Utils.removeDuplicates(liste1);
+		liste2 = Utils.removeDuplicates(liste2);
+		ArrayList<Integer> result =  new ArrayList<Integer>();
+		int nbFoundedItems = 0;
+		for (Integer  item2: liste2) {
+			for (Integer item1 : liste1) {
+				if(item1 == item2){
+                    nbFoundedItems++;
+				}
+			}
+		}
+		if(nbFoundedItems == liste2.size())
+			result.add(1);
+		else
+			result.add(0);
+		return  result;
+     
 	}
-
 
 	public MaListe get(){
 		return maListe_;
