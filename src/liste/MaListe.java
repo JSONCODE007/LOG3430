@@ -12,44 +12,41 @@ public class MaListe implements Liste {
 
 	@Override
 	public void add(ArrayList<Integer> ensemble) {
-		// TODO Auto-generated method stub
+		liste_.add(ensemble);
 
 	}
 
 	@Override
 	public void removeAt(int position) {
-		// TODO Auto-generated method stub
+		liste_.remove(position);
 
 	}
 
 	@Override
 	public void removeItem(ArrayList<Integer> ensemble) {
-		// TODO Auto-generated method stub
+		liste_.removeAll(ensemble);
 
 	}
 
 	@Override
 	public void setAt(ArrayList<Integer> ensemble, int position) {
-		// TODO Auto-generated method stub
+		liste_.set(position, ensemble);
 
 	}
 
 	@Override
 	public ArrayList<Integer> getAt(int position) {
-		// TODO Auto-generated method stub
-		return null;
+		return liste_.get(position);
 	}
 
 	@Override
 	public int getSize() {
-		// TODO Auto-generated method stub
-		return 0;
+		return liste_.size();
 	}
 
 	@Override
 	public void reset() {
-		// TODO Auto-generated method stub
-
+		liste_.clear();
 	}
 
 }
