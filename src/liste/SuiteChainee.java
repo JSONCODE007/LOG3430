@@ -72,11 +72,7 @@ public class SuiteChainee {
 
 		ArrayList<Integer> result = new ArrayList<Integer>();
 		//ajouter les elements de la premieres liste a l'ensemble
-		for (Integer item : liste1) {
-			if(!result.contains(item)){
-				result.add(item);
-			}
-		}
+		 result  = Utils.removeDuplicates(liste1);
 		//ajouter les elements de la seconde liste a l'ensemble
 		for (Integer item : liste2) {
 			if(!result.contains(item)){

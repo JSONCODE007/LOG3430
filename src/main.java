@@ -12,7 +12,7 @@ public class main {
 		
 		liste1.add(1);
 		liste1.add(1);
-		liste1.add(3);
+		liste1.add(1);
 		liste1.add(6);
 		liste1.add(9);
 		
@@ -24,7 +24,7 @@ public class main {
 		liste2.add(6);
 		
 		
-       SuiteChainee test_suite = new SuiteChainee("is subset", liste1, liste2);
+       SuiteChainee test_suite = new SuiteChainee("union", liste1, liste2);
        
 		System.out.println("end the prog");
 
