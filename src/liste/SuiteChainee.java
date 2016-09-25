@@ -5,40 +5,33 @@ import java.util.ArrayList;
 
 public class SuiteChainee {
 
-	private MaListe maListe_;
+	private Chaine maListe_;
 
 	public SuiteChainee(String operation, ArrayList<Integer> liste1, ArrayList<Integer> liste2) throws Exception{
 		
 		ArrayList<Integer> operationResult = new ArrayList<Integer>();
 
 		switch (operation) {
-		
 		case "union": 
 			operationResult = union(liste1, liste2);
 			break;
-			
 		case "intersection":
 			operationResult= intersection(liste1, liste2);
 			break;
-			
 		case "difference":
 			operationResult= difference(liste1, liste2);
 			break;
-
 		case "symmetric difference":
 			operationResult = symmetricDifference(liste1, liste2);
 			break;
-
 		case "is subset":
 			operationResult = isSubset(liste1, liste2);
 			break;
-
 		case "is superset":
 			operationResult = isSuperset(liste1, liste2);
 			break;
-
 		default :
-			throw new Exception("This operation is not suppported !"); 
+			throw new Exception("Cette operation n'est pas supporté !"); 
 
 		}
 		System.out.println(operation);
@@ -47,19 +40,24 @@ public class SuiteChainee {
 		System.out.println(operationResult);
 		
 		//instantier la nouvelle liste qui contient les ensembles
-		maListe_ = new MaListe(liste1,liste2,operationResult);
+		maListe_ = new Chaine(liste1,liste2,operationResult);
 	}
 
 	/***
-	 *
+	 * performer l'union de deux ensembles
 	 * @param liste1
 	 * @param liste2
+	 * @return tous les elements distincts des 2 listes
 	 */
 	private ArrayList<Integer> union(ArrayList<Integer> liste1, ArrayList<Integer> liste2){
 
 		ArrayList<Integer> result = new ArrayList<Integer>();
 		//ajouter les elements de la premieres liste a l'ensemble
-		 result  = Utils.removeDuplicates(liste1);
+		for (Integer item : liste1) {
+			if(!result.contains(item)){
+				result.add(item);
+			}
+		}
 		//ajouter les elements de la seconde liste a l'ensemble
 		for (Integer item : liste2) {
 			if(!result.contains(item)){
@@ -68,10 +66,11 @@ public class SuiteChainee {
 		}
 		return result;
 	}
-	/**
-	 * 
+	/***
+	 * performer  
 	 * @param liste1
 	 * @param liste2
+	 * @return
 	 */
 	private ArrayList<Integer>  intersection(ArrayList<Integer> liste1, ArrayList<Integer> liste2){
 		ArrayList<Integer> result = new ArrayList<Integer>();
@@ -179,7 +178,7 @@ public class SuiteChainee {
      
 	}
 
-	public MaListe get(){
+	public Chaine get(){
 		return maListe_;
 	}
 }

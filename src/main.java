@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-import liste.MaListe;
+import liste.Chaine;
 import liste.SuiteChainee;
 
 public class main {
@@ -34,7 +34,7 @@ public class main {
 		System.out.println("end the prog");
 
 		System.out.println("start test MaListe");
-		MaListe test = new MaListe(liste1,liste2,liste3);
+		Chaine test = new Chaine(liste1,liste2,liste3);
 		test.print();
 		System.out.println("test");
 		test.reset();
