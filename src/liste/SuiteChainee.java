@@ -34,10 +34,6 @@ public class SuiteChainee {
 			throw new Exception("Cette operation n'est pas supporté !"); 
 
 		}
-		System.out.println(operation);
-		System.out.println(liste1);
-		System.out.println(liste2);
-		System.out.println(operationResult);
 		
 		//instantier la nouvelle liste qui contient les ensembles
 		maListe_ = new Chaine(liste1,liste2,operationResult);

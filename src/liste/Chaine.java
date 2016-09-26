@@ -7,7 +7,6 @@ public class Chaine implements IChaine {
 	private ArrayList<ArrayList<Integer>> chaine_;
 
 	public Chaine(ArrayList<Integer> liste1, ArrayList<Integer> liste2, ArrayList<Integer> liste3){
-		System.out.println("ama liste constructor");
 		//ajouter initialement les 3 listes a la chaine
 		chaine_ = new ArrayList<ArrayList<Integer>>();
 		chaine_.add(liste1);
@@ -19,9 +18,16 @@ public class Chaine implements IChaine {
 	 * afficher tous les ensembles dans la liste
 	 */
 	public void print(){
+		int i = 0;
 		for (ArrayList<Integer> arrayList : chaine_) {
-			System.out.println(arrayList);
+			System.out.print(arrayList);
+			//Pour afficher tous les ensembles sur une meme ligne et separees par une virgule
+			if(i<chaine_.size()-1){
+				System.out.print(",");
+			}
+			i++;
 		}
+		System.out.print("\n");
 	}
 
 	@Override
