@@ -10,7 +10,7 @@ public class main {
 		ArrayList<Integer> liste2 = new ArrayList<Integer>();
 		
 		liste1.add(1);
-		liste1.add(3);
+		liste1.add(2);
 		
 		liste2.add(2);
 		liste2.add(3);
