@@ -48,6 +48,7 @@ public class SuiteChainee {
 	private ArrayList<Integer> union(ArrayList<Integer> liste1, ArrayList<Integer> liste2){
 
 		ArrayList<Integer> result = new ArrayList<Integer>();
+		
 		//ajouter les elements de la premieres liste a l'ensemble
 		for (Integer item : liste1) {
 			if(!result.contains(item)){
@@ -69,7 +70,9 @@ public class SuiteChainee {
 	 * @return
 	 */
 	private ArrayList<Integer>  intersection(ArrayList<Integer> liste1, ArrayList<Integer> liste2){
+		
 		ArrayList<Integer> result = new ArrayList<Integer>();
+		
 		for(int i=0;i< liste1.size();i++){
 			for(int j=0;j< liste2.size();j++){
 				if(liste1.get(i) == liste2.get(j) ){
@@ -84,11 +87,13 @@ public class SuiteChainee {
 	}
 
 	/**
-	 * 
+	 * Tous les elements de liste1 qui se sont pas dans liste 2
 	 * @param liste1
 	 * @param liste2
+	 * @return
 	 */
 	private ArrayList<Integer>  difference(ArrayList<Integer> liste1, ArrayList<Integer> liste2){
+		
 		ArrayList<Integer> result = new ArrayList<Integer>();
 		for(int i=0; i< liste1.size(); i++){
 			boolean isInListe2  = false;
@@ -128,9 +133,10 @@ public class SuiteChainee {
 	 */
 
 	private ArrayList<Integer>  isSubset(ArrayList<Integer> liste1, ArrayList<Integer> liste2){
-		//remvove all duplicates items in 
+		//remvove all duplicates items in listes
 		liste1 = Utils.removeDuplicates(liste1);
 		liste2 = Utils.removeDuplicates(liste2);
+		
 		ArrayList<Integer> result =  new ArrayList<Integer>();
 		int nbFoundedItems = 0;
 		for (Integer  item1: liste1) {
@@ -144,14 +150,16 @@ public class SuiteChainee {
 			result.add(1);
 		else
 			result.add(0);
+		
 		return  result;
 
 	}
 	/**
-	 * liste 1 contient tous les elements de liste2 ou 
+	 *  liste 1 contient tous les elements de liste2 ou 
 	 *tous les elements de liste2 sont dans liste1
 	 * @param liste1
 	 * @param liste2
+	 * @return
 	 */
 	private ArrayList<Integer> isSuperset(ArrayList<Integer> liste1, ArrayList<Integer> liste2) {
 		//remvove all duplicates items in 
@@ -170,6 +178,7 @@ public class SuiteChainee {
 			result.add(1);
 		else
 			result.add(0);
+		
 		return  result;
      
 	}
