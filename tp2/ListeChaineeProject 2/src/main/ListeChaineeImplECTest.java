@@ -58,7 +58,7 @@ public class ListeChaineeImplECTest {
 		exceptedResult.add(val2);
 		exceptedResult.add(unionVal1Val2);
 		
-		assertTrue("Union result",isMyListAreEquals(exceptedResult,toTest));
+		assertTrue("Resultat de l'union doit etre [[4,1], [2,3], [4,1,2,3]]",isMyListAreEquals(exceptedResult,toTest));
 		
 	}
 	/***
@@ -66,13 +66,46 @@ public class ListeChaineeImplECTest {
 	 */
 	@Test
 	public void intersectionOpTest() {
-		assertEquals("10 x 5 must be 50", 500, 10*5);
+		//initiate values
+		ArrayList<Object> val1 = new ArrayList<Object>(Arrays.asList(4,7,8,1));
+		ArrayList<Object> val2 = new ArrayList<Object>(Arrays.asList(2,3,8,4,7));
+		ArrayList<Object> intersectVal1Val2 = new ArrayList<Object>(Arrays.asList(8,4,7));
+
+		//given values for test proposal
+		MyList toTest = new MyListImpl();	
+		ListeChainee suiteChainee= new ListeChaineeImpl();
+		toTest = suiteChainee.build("intersection", val1, val2);
+		
+		//excepted result 
+		MyList exceptedResult = new MyListImpl();	
+		exceptedResult.add(val1);
+		exceptedResult.add(val2);
+		exceptedResult.add(intersectVal1Val2);
+		
+		assertTrue("Resultat de l'intersection doit etre [[4,7,8,1], [2,3,8,4,7], [8,4,7]]",isMyListAreEquals(exceptedResult,toTest));
 	}
 	/**
 	 * difference  operation  test case
 	 */
 	@Test
 	public void differenceOpTest(){
+		//initiate values
+		ArrayList<Object> val1 = new ArrayList<Object>(Arrays.asList(4,7,8,1));
+		ArrayList<Object> val2 = new ArrayList<Object>(Arrays.asList(2,3,8,4,7));
+		ArrayList<Object> differenceVal1Val2 = new ArrayList<Object>(Arrays.asList(1));
+
+		//given values for test proposal
+		MyList toTest = new MyListImpl();	
+		ListeChainee suiteChainee= new ListeChaineeImpl();
+		toTest = suiteChainee.build("difference", val1, val2);
+		
+		//excepted result 
+		MyList exceptedResult = new MyListImpl();	
+		exceptedResult.add(val1);
+		exceptedResult.add(val2);
+		exceptedResult.add(differenceVal1Val2);
+		
+		assertTrue("Resultat de la difference doit etre [[4,7,8,1], [2,3,8,4,7], [1]]",isMyListAreEquals(exceptedResult,toTest));
 		
 	}
 	/***
@@ -80,20 +113,71 @@ public class ListeChaineeImplECTest {
 	 */
 	@Test
 	public void symDifferenceOpTest(){
+		//initiate values
+		ArrayList<Object> val1 = new ArrayList<Object>(Arrays.asList(4,7,8,1));
+		ArrayList<Object> val2 = new ArrayList<Object>(Arrays.asList(2,3,8,4,7));
+		ArrayList<Object> symetricDiffVal1Val2 = new ArrayList<Object>(Arrays.asList(2,3));
+
+		//given values for test proposal
+		MyList toTest = new MyListImpl();	
+		ListeChainee suiteChainee= new ListeChaineeImpl();
+		toTest = suiteChainee.build("symmetric difference", val1, val2);
 		
+		//excepted result 
+		MyList exceptedResult = new MyListImpl();	
+		exceptedResult.add(val1);
+		exceptedResult.add(val2);
+		exceptedResult.add(symetricDiffVal1Val2);
+		
+		assertTrue("Resultat de la symmetric difference doit etre [[4,7,8,1], [2,3,8,4,7], [2,3]]",isMyListAreEquals(exceptedResult,toTest));
 	}
 	/***
 	 * is subset operation test case
 	 */
 	@Test
 	public void isSubserOpTest(){
+		//initiate values
+		ArrayList<Object> val1 = new ArrayList<Object>(Arrays.asList(1,3,5));
+		ArrayList<Object> val2 = new ArrayList<Object>(Arrays.asList(1,9,4,8,3,11,5));
+		ArrayList<Object> subSetVal1Val2 = new ArrayList<Object>(Arrays.asList(1));
+
+		//given values for test proposal
+		MyList toTest = new MyListImpl();	
+		ListeChainee suiteChainee= new ListeChaineeImpl();
+		toTest = suiteChainee.build("is subset", val1, val2);
 		
+		//excepted result 
+		MyList exceptedResult = new MyListImpl();	
+		exceptedResult.add(val1);
+		exceptedResult.add(val2);
+		exceptedResult.add(subSetVal1Val2);
+		
+		assertTrue("Resultat de is subset doit etre [[1,3,5], [1,9,4,8,3,11,5], [1]]",isMyListAreEquals(exceptedResult,toTest));
+
 	}
 	/***
 	 * is superset operation test case 
 	 */
 	@Test
 	public void isSupersetOpTest(){
+		//initiate values
+		ArrayList<Object> val1 = new ArrayList<Object>(Arrays.asList(1,3,5));
+		ArrayList<Object> val2 = new ArrayList<Object>(Arrays.asList(1,9,4,8,3,11,5));
+		ArrayList<Object> superSetVal1Val2 = new ArrayList<Object>(Arrays.asList(0));
+
+		//given values for test proposal
+		MyList toTest = new MyListImpl();	
+		ListeChainee suiteChainee= new ListeChaineeImpl();
+		toTest = suiteChainee.build("is superset", val1, val2);
+		
+		//excepted result 
+		MyList exceptedResult = new MyListImpl();	
+		exceptedResult.add(val1);
+		exceptedResult.add(val2);
+		exceptedResult.add(superSetVal1Val2);
+		
+		assertTrue("Resultat de is subset doit etre [[1,3,5], [1,9,4,8,3,11,5], [0]]",isMyListAreEquals(exceptedResult,toTest));
+
 		
 	}
 	/**
