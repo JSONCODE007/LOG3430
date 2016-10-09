@@ -280,7 +280,7 @@ public class ListeChaineeImplTest_AC {
 		exceptedResult.add(val2);
 		exceptedResult.add(unionVal1Val2);
 
-		assertTrue("Resultat de l'union doit etre [[7,8], [5,8,8], [7,8,5]]",isMyListAreEquals(exceptedResult,toTest));
+		assertTrue("Resultat de l'union doit etre [[7,8,8], [5,9,10,8], [7,8,8,5,9,10]]",isMyListAreEquals(exceptedResult,toTest));
 
 	}
 	
@@ -309,10 +309,273 @@ public class ListeChaineeImplTest_AC {
 		exceptedResult.add(val2);
 		exceptedResult.add(unionVal1Val2);
 
-		assertTrue("Resultat de l'union doit etre [[7,8], [5,8,8], [7,8,5]]",isMyListAreEquals(exceptedResult,toTest));
+		assertTrue("Resultat de l'union doit etre [[7,8], [5,9,10,4,8,4], [7,8,8,5,9,10,4,4]]",isMyListAreEquals(exceptedResult,toTest));
 
 	}
 	
+	
+	/***
+	 *  intersection operation test case
+	 *  val1 est un ensemble vide 
+	 *  val2 ensemble vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void intersectionOpTest1() throws IOException {
+
+		//initiate values
+		ArrayList<Object> val1 = new ArrayList<Object>(Arrays.asList());
+		ArrayList<Object> val2 = new ArrayList<Object>(Arrays.asList());
+		ArrayList<Object> intersectionVal1Val2 = new ArrayList<Object>(Arrays.asList());
+
+		//given values for test proposal
+		MyList toTest = new MyListImpl();	
+		ListeChainee suiteChainee= new ListeChaineeImpl();
+		toTest = suiteChainee.build("intersection", val1, val2);
+
+		//excepted result 
+		MyList exceptedResult = new MyListImpl();	
+		exceptedResult.add(val1);
+		exceptedResult.add(val2);
+		exceptedResult.add(intersectionVal1Val2);
+
+		assertTrue("Resultat de l'intersection doit etre [[], [], []]",isMyListAreEquals(exceptedResult,toTest));
+
+	}
+	
+	/***
+	 *  intersection operation test case
+	 *  val1 est un ensemble non-vide 
+	 *  val2 ensemble vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void intersectionOpTest2() throws IOException {
+
+		//initiate values
+		ArrayList<Object> val1 = new ArrayList<Object>(Arrays.asList(2,3));
+		ArrayList<Object> val2 = new ArrayList<Object>(Arrays.asList());
+		ArrayList<Object> intersectionVal1Val2 = new ArrayList<Object>(Arrays.asList());
+
+		//given values for test proposal
+		MyList toTest = new MyListImpl();	
+		ListeChainee suiteChainee= new ListeChaineeImpl();
+		toTest = suiteChainee.build("intersection", val1, val2);
+
+		//excepted result 
+		MyList exceptedResult = new MyListImpl();	
+		exceptedResult.add(val1);
+		exceptedResult.add(val2);
+		exceptedResult.add(intersectionVal1Val2);
+
+		assertTrue("Resultat de l'intersection doit etre [[2,3], [], []]",isMyListAreEquals(exceptedResult,toTest));
+
+	}
+	
+	/***
+	 *  intersection operation test case
+	 *  val1 est un ensemble vide 
+	 *  val2 ensemble non-vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void intersectionOpTest3() throws IOException {
+
+		//initiate values
+		ArrayList<Object> val1 = new ArrayList<Object>(Arrays.asList());
+		ArrayList<Object> val2 = new ArrayList<Object>(Arrays.asList(3,4));
+		ArrayList<Object> intersectionVal1Val2 = new ArrayList<Object>(Arrays.asList());
+
+		//given values for test proposal
+		MyList toTest = new MyListImpl();	
+		ListeChainee suiteChainee= new ListeChaineeImpl();
+		toTest = suiteChainee.build("intersection", val1, val2);
+
+		//excepted result 
+		MyList exceptedResult = new MyListImpl();	
+		exceptedResult.add(val1);
+		exceptedResult.add(val2);
+		exceptedResult.add(intersectionVal1Val2);
+
+		assertTrue("Resultat de l'intersection doit etre [[], [3,4], []]",isMyListAreEquals(exceptedResult,toTest));
+
+	}
+	
+	
+	/***
+	 *  intersection operation test case
+	 *  val1 est un ensemble non-vide 
+	 *  val2 ensemble non-vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void intersectionOpTest4() throws IOException {
+
+		//initiate values
+		ArrayList<Object> val1 = new ArrayList<Object>(Arrays.asList(5,6,0,9));
+		ArrayList<Object> val2 = new ArrayList<Object>(Arrays.asList(3,4,9,11,5));
+		ArrayList<Object> intersectionVal1Val2 = new ArrayList<Object>(Arrays.asList(5,9));
+
+		//given values for test proposal
+		MyList toTest = new MyListImpl();	
+		ListeChainee suiteChainee= new ListeChaineeImpl();
+		toTest = suiteChainee.build("intersection", val1, val2);
+
+		//excepted result 
+		MyList exceptedResult = new MyListImpl();	
+		exceptedResult.add(val1);
+		exceptedResult.add(val2);
+		exceptedResult.add(intersectionVal1Val2);
+
+		assertTrue("Resultat de l'intersection doit etre [[5,6,0,9], [3,4,9,11,5], [5,9]]",isMyListAreEquals(exceptedResult,toTest));
+
+	}
+	
+	/***
+	 *  intersection operation test case
+	 *  val1 est un ensemble non-vide avec doublons
+	 *  val2 ensemble vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void intersectionOpTest5() throws IOException {
+
+		//initiate values
+		ArrayList<Object> val1 = new ArrayList<Object>(Arrays.asList(5,6,6));
+		ArrayList<Object> val2 = new ArrayList<Object>(Arrays.asList());
+		ArrayList<Object> intersectionVal1Val2 = new ArrayList<Object>(Arrays.asList());
+
+		//given values for test proposal
+		MyList toTest = new MyListImpl();	
+		ListeChainee suiteChainee= new ListeChaineeImpl();
+		toTest = suiteChainee.build("intersection", val1, val2);
+
+		//excepted result 
+		MyList exceptedResult = new MyListImpl();	
+		exceptedResult.add(val1);
+		exceptedResult.add(val2);
+		exceptedResult.add(intersectionVal1Val2);
+
+		assertTrue("Resultat de l'intersection doit etre [[5,6,6], [], []]",isMyListAreEquals(exceptedResult,toTest));
+
+	}
+	
+	/***
+	 *  intersection operation test case
+	 *  val1 est un ensemble vide 
+	 *  val2 ensemble non-vide avec doublons
+	 * @throws IOException 
+	 */
+	@Test
+	public void intersectionOpTest6() throws IOException {
+
+		//initiate values
+		ArrayList<Object> val1 = new ArrayList<Object>(Arrays.asList());
+		ArrayList<Object> val2 = new ArrayList<Object>(Arrays.asList(5,8,8));
+		ArrayList<Object> intersectionVal1Val2 = new ArrayList<Object>(Arrays.asList());
+
+		//given values for test proposal
+		MyList toTest = new MyListImpl();	
+		ListeChainee suiteChainee= new ListeChaineeImpl();
+		toTest = suiteChainee.build("intersection", val1, val2);
+
+		//excepted result 
+		MyList exceptedResult = new MyListImpl();	
+		exceptedResult.add(val1);
+		exceptedResult.add(val2);
+		exceptedResult.add(intersectionVal1Val2);
+
+		assertTrue("Resultat de l'intersection doit etre [[], [5,8,8], []]",isMyListAreEquals(exceptedResult,toTest));
+
+	}
+
+
+	/***
+	 *  intersection operation test case
+	 *  val1 est un ensemble non-vide 
+	 *  val2 ensemble non-vide avec doublons
+	 * @throws IOException 
+	 */
+	@Test
+	public void intersectionOpTest7() throws IOException {
+
+		//initiate values
+		ArrayList<Object> val1 = new ArrayList<Object>(Arrays.asList(7,8));
+		ArrayList<Object> val2 = new ArrayList<Object>(Arrays.asList(5,8,8));
+		ArrayList<Object> intersectionVal1Val2 = new ArrayList<Object>(Arrays.asList(8));
+
+		//given values for test proposal
+		MyList toTest = new MyListImpl();	
+		ListeChainee suiteChainee= new ListeChaineeImpl();
+		toTest = suiteChainee.build("intersection", val1, val2);
+
+		//excepted result 
+		MyList exceptedResult = new MyListImpl();	
+		exceptedResult.add(val1);
+		exceptedResult.add(val2);
+		exceptedResult.add(intersectionVal1Val2);
+
+		assertTrue("Resultat de l'intersection doit etre [[7,8], [5,8,8], [8]]",isMyListAreEquals(exceptedResult,toTest));
+
+	}
+	
+	/***
+	 *  intersection operation test case
+	 *  val1 est un ensemble non-vide avec doublons
+	 *  val2 ensemble non-vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void intersectionOpTest8() throws IOException {
+
+		//initiate values
+		ArrayList<Object> val1 = new ArrayList<Object>(Arrays.asList(7,8,8));
+		ArrayList<Object> val2 = new ArrayList<Object>(Arrays.asList(5,9,10,8));
+		ArrayList<Object> intersectionVal1Val2 = new ArrayList<Object>(Arrays.asList(8,8));
+
+		//given values for test proposal
+		MyList toTest = new MyListImpl();	
+		ListeChainee suiteChainee= new ListeChaineeImpl();
+		toTest = suiteChainee.build("intersection", val1, val2);
+
+		//excepted result 
+		MyList exceptedResult = new MyListImpl();	
+		exceptedResult.add(val1);
+		exceptedResult.add(val2);
+		exceptedResult.add(intersectionVal1Val2);
+
+		assertTrue("Resultat de l'intersection doit etre [[7,8,8], [5,9,10,8], [8,8]]",isMyListAreEquals(exceptedResult,toTest));
+
+	}
+	
+	/***
+	 *  intersection operation test case
+	 *  val1 est un ensemble non-vide avec doublons
+	 *  val2 ensemble non-vide avec doublons
+	 * @throws IOException 
+	 */
+	@Test
+	public void intersectionOpTest9() throws IOException {
+
+		//initiate values
+		ArrayList<Object> val1 = new ArrayList<Object>(Arrays.asList(7,8,8,10,4));
+		ArrayList<Object> val2 = new ArrayList<Object>(Arrays.asList(5,9,10,4,8,4));
+		ArrayList<Object> intersectionVal1Val2 = new ArrayList<Object>(Arrays.asList(8,8,10,4));
+
+		//given values for test proposal
+		MyList toTest = new MyListImpl();	
+		ListeChainee suiteChainee= new ListeChaineeImpl();
+		toTest = suiteChainee.build("intersection", val1, val2);
+
+		//excepted result 
+		MyList exceptedResult = new MyListImpl();	
+		exceptedResult.add(val1);
+		exceptedResult.add(val2);
+		exceptedResult.add(intersectionVal1Val2);
+
+		assertTrue("Resultat de l'intersection doit etre [[7,8,8,10,4], [5,9,10,4,8,4], [8,8,10,4]]",isMyListAreEquals(exceptedResult,toTest));
+
+	}
 
 	/***
 	 * check whenever 2 myList object  content are the same 
