@@ -58,7 +58,7 @@ public class ListeChaineeImplECTest {
 		exceptedResult.add(val2);
 		exceptedResult.add(unionVal1Val2);
 		
-		assertEquals("union result",exceptedResult, toTest);
+		assertTrue("Union result",isMyListAreEquals(exceptedResult,toTest));
 		
 	}
 	/***
@@ -103,5 +103,22 @@ public class ListeChaineeImplECTest {
 	public void invalidOpTest(){
 		
 	}
-
+	
+	/***
+	 * check whenever 2 myList object  content are the same 
+	 */
+	public boolean isMyListAreEquals(MyList first,MyList second){
+		
+		//The given lists must have the same size
+		if(first.getSize() == second.getSize()){
+			  for (int i = 0; i < first.getSize(); i++) {
+				if(!first.getAt(i).equals(second.getAt(i)))
+					return false;
+			}
+		}else
+			return false;
+		
+		return true ;
+	}
+    
 }
