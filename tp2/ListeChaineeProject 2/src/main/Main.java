@@ -22,13 +22,13 @@ public class Main {
 		
 		val1.add(4);
 		val1.add(1);
-		val2.add(1);
-		val2.add(1);
+		val2.add(2);
+		val2.add(3);
 ///////////////////////////////////////////////////listeChainee////////////////////////////////////////		
 		MyList list = new MyListImpl();	
 		ListeChainee suiteChainee= new ListeChaineeImpl();
 		
-		list = suiteChainee.build("isSuperset", val1, val2);
+		list = suiteChainee.build("union", val1, val2);
 //////////////////////////////////////////////////listeChainee printer//////////////////////////////////	
 		StringBuilder chaineContent=new StringBuilder();
 		for(int i=0; i<list.getSize();i++){
