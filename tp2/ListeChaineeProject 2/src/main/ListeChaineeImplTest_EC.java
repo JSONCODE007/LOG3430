@@ -61,6 +61,7 @@ public class ListeChaineeImplTest_EC {
 		assertTrue("Resultat de l'union doit etre [[4,1], [2,3], [4,1,2,3]]",isMyListAreEquals(exceptedResult,toTest));
 
 	}
+	
 	/***
 	 * 
 	 *   intersection operation test case
