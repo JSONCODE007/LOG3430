@@ -28,7 +28,7 @@ public class Main {
 		MyList list = new MyListImpl();	
 		ListeChainee suiteChainee= new ListeChaineeImpl();
 		
-		list = suiteChainee.build("union", val1, val2);
+		list = suiteChainee.build("balassss", val1, val2);
 //////////////////////////////////////////////////listeChainee printer//////////////////////////////////	
 		StringBuilder chaineContent=new StringBuilder();
 		for(int i=0; i<list.getSize();i++){
