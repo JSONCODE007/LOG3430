@@ -15,7 +15,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * @author thierno
+ * Cette fonction teste les fonctions de mylist via EC et AC
+ * @author thierno et Tomas
  *
  */
 public class MyListImplTest {
@@ -92,7 +93,7 @@ public class MyListImplTest {
 		toTest.add(ensembleTest);
 		toTest.add(ensembleTest);
 
-		//remove item  at invalid position (e.g -1) 
+		//remove item  at invalid position (e.g 10) 
 		toTest.removeAt(10);
 	}
 	/***
@@ -131,7 +132,7 @@ public class MyListImplTest {
 	 * enlever un element situer a une position valide dans la liste
 	 */
 	@Test
-	public void setAtValidPosition(){
+	public void setAtValidPositionTest(){
 		MyList toTest = new MyListImpl();	
 		toTest.add(ensembleTest);
 		toTest.add(ensembleTest1);
@@ -148,7 +149,7 @@ public class MyListImplTest {
 	 * enlever un element situer a une position invalide dans la liste
 	 */
 	@Test(expected=ArrayIndexOutOfBoundsException.class)
-	public void setAtInvalidPosition() {
+	public void setAtInvalidPositionTest() {
 		MyList toTest = new MyListImpl();	
 		toTest.add(ensembleTest);
 		toTest.add(ensembleTest1);
@@ -162,7 +163,7 @@ public class MyListImplTest {
 	 * recuperer un element situer a une position valide dans la liste
 	 */
 	@Test
-	public void getAtValidPosition(){
+	public void getAtValidPositionTest(){
 		MyList toTest = new MyListImpl();	
 		toTest.add(ensembleTest);
 		toTest.add(ensembleTest1);
@@ -176,7 +177,7 @@ public class MyListImplTest {
 	 * recuperer un element situer a une position invalide dans la liste
 	 */
 	@Test(expected=ArrayIndexOutOfBoundsException.class)
-	public void getAtInvalidPosition() {
+	public void getAtInvalidPositionTest() {
 		MyList toTest = new MyListImpl();	
 		toTest.add(ensembleTest);
 		toTest.add(ensembleTest1);
@@ -185,10 +186,10 @@ public class MyListImplTest {
 	}
 
 	/***
-	 * tester la recuperation de  la taille d'une liste
+	 * tester la recuperation de  la taille d'une liste remplie
 	 */
 	@Test
-	public void  getSize(){
+	public void  getSizeTest(){
 		MyList toTest = new MyListImpl();	
 		toTest.add(ensembleTest);
 		toTest.add(ensembleTest1);
@@ -197,12 +198,23 @@ public class MyListImplTest {
 		assertEquals("la taille de la liste doit etre 2 ",2,toTest.getSize());
 	}
 
+	/***
+	 * tester la recuperation de  la taille d'une liste qui est vide
+	 */
+	@Test
+	public void  getEmptyListSizeTest(){
+		MyList toTest = new MyListImpl();	
+
+		//la taille doit etre 2 
+		assertEquals("la taille de la liste doit etre 0 ",0,toTest.getSize());
+	}
+
 	/**
 	 * test de la restauration d'une liste a son etat initial
 	 * The list must be empty after reset(size =0 ) 
 	 */
 	@Test
-	public void  reset(){
+	public void  resetTest(){
 		MyList toTest = new MyListImpl();	
 		toTest.add(ensembleTest);
 		toTest.add(ensembleTest1);

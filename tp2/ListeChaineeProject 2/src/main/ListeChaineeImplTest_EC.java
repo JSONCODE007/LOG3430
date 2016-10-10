@@ -14,6 +14,11 @@ import org.junit.Test;
 
 import junit.framework.Assert;
 
+/**
+ * la fonction test la liste chainee via EC 
+ * @author thierno and Tomas 
+ *
+ */
 public class ListeChaineeImplTest_EC {
 
 
@@ -35,6 +40,7 @@ public class ListeChaineeImplTest_EC {
 	}
 
 	/***
+	 * 2 listes normales
 	 *  union operation test case
 	 * @throws IOException 
 	 */
@@ -62,7 +68,7 @@ public class ListeChaineeImplTest_EC {
 	}
 	
 	/***
-	 * 
+	 *  The fuction take 2 normal lists 
 	 *   intersection operation test case
 	 * @throws IOException 
 	 */
@@ -141,6 +147,7 @@ public class ListeChaineeImplTest_EC {
 		assertTrue("Resultat de la symmetric difference doit etre [[4,7,8,1], [2,3,8,4,7], [1,2,3]]",isMyListAreEquals(exceptedResult,toTest));
 	}
 	/***
+	 * 2 listes normales
 	 * is subset operation test case
 	 * @throws IOException 
 	 */
@@ -166,6 +173,7 @@ public class ListeChaineeImplTest_EC {
 
 	}
 	/***
+	 * 2 listes normales
 	 * is superset operation test case 
 	 * @throws IOException 
 	 */
@@ -192,6 +200,7 @@ public class ListeChaineeImplTest_EC {
 
 	}
 	/**
+	 * 2 listes non vides
 	 * invalid operation test case 
 	 */
 	@Test
