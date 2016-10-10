@@ -28,7 +28,6 @@ public class ListeChaineeImplTest_EC {
 
 	@Before
 	public void setUp() throws Exception {
-		System.out.println("yolo");
 	}
 
 	@After
@@ -204,6 +203,8 @@ public class ListeChaineeImplTest_EC {
 		MyList toTest = suiteChainee.build("invalid", val1, val2);
 		fail("Specied Operation not supported");
 	}
+	
+
 
 	/***
 	 * check whenever 2 myList object  content are the same 
