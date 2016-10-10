@@ -15,7 +15,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * @author thierno
+ * Cette fonction teste les fonctions de mylist via EC et AC
+ * @author thierno et Tomas
  *
  */
 public class MyListImplTest {

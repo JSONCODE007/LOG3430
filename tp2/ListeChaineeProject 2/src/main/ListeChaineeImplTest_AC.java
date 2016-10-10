@@ -16,7 +16,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * @author thierno
+ * Cette fonction teste la liste chainee via AC
+ * @author thierno and Tomas
  *
  */
 public class ListeChaineeImplTest_AC {
