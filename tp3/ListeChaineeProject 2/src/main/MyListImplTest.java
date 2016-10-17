@@ -14,6 +14,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import liste_tp3.MyListImpl;
+
 /**
  * Cette fonction teste les fonctions de mylist via EC et AC
  * @author thierno et Tomas

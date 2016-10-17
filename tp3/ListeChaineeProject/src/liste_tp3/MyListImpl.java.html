@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>MyListImpl.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">ListeChaineeImplTest_EC (2016-10-17 10:23:01)</a> &gt; <a href="../../index.html" class="el_group">ListeChaineeProject</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">liste_tp3</a> &gt; <span class="el_source">MyListImpl.java</span></div><h1>MyListImpl.java</h1><pre class="source lang-java linenums">/**
+ * @class			: MyListImpl
+ * @interface		: MyList
+ * @author	 		: Ons mlouki
+ * 					  Ons.mlouki@gmail.com
+ *
+ * @summary			:  linkedList object 
+ * 						based on &quot;external reference&quot; 
+ */
+package liste_tp3;
+
+import java.util.ArrayList;
+
+import main.MyList;
+
+public class MyListImpl implements MyList{
+	private Elem start;
+	private Elem current;
+	private int size;
+	
+	
+	
+	public MyListImpl() {
+<span class="fc" id="L24">		super();</span>
+<span class="fc" id="L25">		start = null;</span>
+<span class="fc" id="L26">		current = start;</span>
+<span class="fc" id="L27">		size = -1;</span>
+<span class="fc" id="L28">	}</span>
+
+
+	public void add(ArrayList&lt;Object&gt; e) {
+<span class="fc" id="L32">		Elem newElem = new Elem(e, null);</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">		if(start == null) {</span>
+<span class="fc" id="L34">			start = newElem;</span>
+<span class="fc" id="L35">			current = start;</span>
+<span class="fc" id="L36">		} else {</span>
+<span class="fc" id="L37">			current.setNext(newElem);</span>
+<span class="fc" id="L38">			current = newElem;</span>
+		}
+<span class="fc" id="L40">		size++;</span>
+<span class="fc" id="L41">	}</span>
+	
+
+	public void removeAt(int pos) {
+<span class="fc bfc" id="L45" title="All 2 branches covered.">		if (pos &gt; size) {</span>
+<span class="fc" id="L46">			throw new ArrayIndexOutOfBoundsException(&quot;La taille est &quot; + size + &quot;l'element &quot; + pos + &quot;n'existe donc pas&quot;);</span>
+		}
+<span class="fc" id="L48">		Elem previous = start;</span>
+<span class="fc" id="L49">		Elem toRemove = previous;</span>
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">		if(pos == 0) {</span>
+<span class="nc" id="L51">			toRemove = start;</span>
+<span class="nc" id="L52">			start=start.getNext();</span>
+<span class="nc" id="L53">		} else {</span>
+<span class="pc bpc" id="L54" title="1 of 2 branches missed.">			while(pos-- &gt; 1) </span>
+<span class="nc" id="L55">				previous = previous.getNext();</span>
+<span class="fc" id="L56">			toRemove = previous.getNext();</span>
+<span class="fc" id="L57">			previous.setNext(toRemove.getNext());</span>
+		}
+<span class="fc" id="L59">		size--;</span>
+<span class="fc" id="L60">	}</span>
+	
+
+	public void removeItem(ArrayList&lt;Object&gt; item) {
+<span class="fc" id="L64">		Elem previous = null;</span>
+<span class="fc" id="L65">		Elem toRemove = start;</span>
+<span class="fc" id="L66">		boolean found = false;</span>
+<span class="pc bpc" id="L67" title="1 of 4 branches missed.">		if(start != null &amp;&amp; start.getContent()==item) {</span>
+<span class="fc" id="L68">			found = true;</span>
+<span class="fc" id="L69">			toRemove = start;</span>
+<span class="fc" id="L70">			start=start.getNext();</span>
+<span class="fc" id="L71">			size--;</span>
+<span class="fc" id="L72">		}</span>
+		else {
+<span class="pc bpc" id="L74" title="2 of 4 branches missed.">			while(!found &amp;&amp; toRemove != null) {</span>
+<span class="fc" id="L75">				previous = toRemove;</span>
+<span class="fc" id="L76">				toRemove = toRemove.getNext();</span>
+<span class="pc bpc" id="L77" title="1 of 2 branches missed.">				if(toRemove.getContent()==item) {</span>
+<span class="nc" id="L78">					found = true;</span>
+                                }
+			}
+<span class="nc" id="L81">			previous.setNext(toRemove.getNext());</span>
+<span class="nc" id="L82">			size--;</span>
+		}
+			
+<span class="fc" id="L85">	}</span>
+	
+	
+	public void setAt(ArrayList&lt;Object&gt; item, int pos) {
+<span class="fc bfc" id="L89" title="All 2 branches covered.">		if(pos &gt; size) {</span>
+<span class="fc" id="L90">			throw new ArrayIndexOutOfBoundsException(&quot;La taille est &quot; + size + &quot; l'element &quot; + pos + &quot; n'existe donc pas&quot;);</span>
+		}
+<span class="fc" id="L92">		Elem current = start;</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">		while(pos-- &gt; 0) current = current.getNext();</span>
+<span class="fc" id="L94">		current.setContent(item);</span>
+<span class="fc" id="L95">	}</span>
+	
+
+	
+	public ArrayList&lt;Object&gt; getAt(int pos) {
+<span class="fc bfc" id="L100" title="All 2 branches covered.">		if(pos &gt; size) {</span>
+<span class="fc" id="L101">			throw new ArrayIndexOutOfBoundsException(&quot;La taille est &quot; + size + &quot; l'element &quot; + pos + &quot; n'existe donc pas&quot;);</span>
+		}
+<span class="fc" id="L103">		Elem current = start;</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">		while(pos-- &gt; 0) current = current.getNext();</span>
+<span class="fc" id="L105">		return current.getContent();</span>
+	}
+	
+
+	
+	public int getSize() {
+<span class="fc" id="L111">		return size+1;</span>
+	}
+	
+	class Elem {
+		private ArrayList&lt;Object&gt; content;
+		private Elem next;
+		
+<span class="fc" id="L118">		public Elem(ArrayList&lt;Object&gt; e, Elem next) {</span>
+<span class="fc" id="L119">			super();</span>
+<span class="fc" id="L120">			this.content = e;</span>
+<span class="fc" id="L121">			this.next = next;</span>
+<span class="fc" id="L122">		}</span>
+		
+		public ArrayList&lt;Object&gt; getContent() {
+<span class="fc" id="L125">			return content;</span>
+		}
+		
+		public Elem getNext() {
+<span class="fc" id="L129">			return next;</span>
+		}
+		
+		public void setNext(Elem n) {
+<span class="fc" id="L133">			next = n;</span>
+<span class="fc" id="L134">		}</span>
+		
+		public void setContent(ArrayList&lt;Object&gt; c) {
+<span class="fc" id="L137">			content = c;</span>
+<span class="fc" id="L138">		}</span>
+		
+	}
+
+	
+	public void reset() {
+<span class="fc" id="L144">		size = -1;</span>
+<span class="fc" id="L145">		start  = null;</span>
+<span class="fc" id="L146">		current = start;</span>
+<span class="fc" id="L147">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>ListeChaineeImplTest_EC (2016-10-17 10:23:01)</div></body></html>

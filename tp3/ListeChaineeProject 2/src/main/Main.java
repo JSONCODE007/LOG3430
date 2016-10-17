@@ -8,6 +8,9 @@ package main;
 
 import java.util.ArrayList;
 
+import liste_tp3.ListeChaineeImpl;
+import liste_tp3.MyListImpl;
+
 public class Main {
 
 	public static void main(String[] args) throws Exception {

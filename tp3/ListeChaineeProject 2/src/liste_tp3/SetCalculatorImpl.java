@@ -5,9 +5,11 @@
  * 					  Ons.mlouki@gmail.com
  * 					  
  */
-package main;
+package liste_tp3;
 
 import java.util.ArrayList;
+
+import main.SetCalculator;
 
 public class SetCalculatorImpl implements SetCalculator {
 		

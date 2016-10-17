@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>MyListImplTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">ListeChaineeImplTest_EC (2016-10-17 10:23:01)</a> &gt; <a href="../../index.html" class="el_group">ListeChaineeProject</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">main</a> &gt; <span class="el_source">MyListImplTest.java</span></div><h1>MyListImplTest.java</h1><pre class="source lang-java linenums">/**
+ * 
+ */
+package main;
+
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import liste_tp3.MyListImpl;
+
+/**
+ * Cette fonction teste les fonctions de mylist via EC et AC
+ * @author thierno et Tomas
+ *
+ */
+<span class="nc" id="L24">public class MyListImplTest {</span>
+
+
+<span class="nc" id="L27">	ArrayList&lt;Object&gt; ensembleTest = new ArrayList&lt;Object&gt;(Arrays.asList(4,1));</span>
+<span class="nc" id="L28">	ArrayList&lt;Object&gt; ensembleTest1 = new ArrayList&lt;Object&gt;(Arrays.asList(12,67));</span>
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+<span class="nc" id="L34">	}</span>
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+<span class="nc" id="L41">	}</span>
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@Before
+	public void setUp() throws Exception {
+
+<span class="nc" id="L49">	}</span>
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@After
+	public void tearDown() throws Exception {
+
+<span class="nc" id="L57">	}</span>
+
+	/**
+	 * test de l ajout d'un ensemble a une liste
+	 */
+	@Test
+	public void  addTest(){
+		//add new list 
+<span class="nc" id="L65">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L66">		toTest.add(ensembleTest);</span>
+<span class="nc" id="L67">		assertEquals(&quot;Apres un ajout ,la taille de liste  doit etre 1 &quot;,1,toTest.getSize());</span>
+
+<span class="nc" id="L69">	}</span>
+	/**
+	 * enlever un element situe a une positon  existante dans la liste
+	 */
+
+	@Test 
+	public void  removeAtValidPositionTest(){
+		//create list and add some fake data
+<span class="nc" id="L77">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L78">		toTest.add(ensembleTest);</span>
+<span class="nc" id="L79">		toTest.add(ensembleTest);</span>
+
+		//remove second item
+<span class="nc" id="L82">		toTest.removeAt(1);</span>
+<span class="nc" id="L83">		assertEquals(&quot;Apres un retrait dans une liste de taille 2 ,la taille de liste  doit etre 1 &quot;,1,toTest.getSize());</span>
+
+
+<span class="nc" id="L86">	}</span>
+	/***
+	 * enlever un element situer a une position invalide(soit -1 ou superieur a la taille de la file)
+	 * The test case must throw an exception
+	 */
+	@Test(expected=ArrayIndexOutOfBoundsException.class)
+	public void  removeAtInvalidPositionTest(){
+		//create list and add some fake data
+<span class="nc" id="L94">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L95">		toTest.add(ensembleTest);</span>
+<span class="nc" id="L96">		toTest.add(ensembleTest);</span>
+
+		//remove item  at invalid position (e.g 10) 
+<span class="nc" id="L99">		toTest.removeAt(10);</span>
+<span class="nc" id="L100">	}</span>
+	/***
+	 * enlever un item qui existe dans une liste 
+	 */
+	@Test
+	public void removeExistingItemTest(){
+		//create list and add some fake data
+<span class="nc" id="L107">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L108">		toTest.add(ensembleTest);</span>
+<span class="nc" id="L109">		toTest.add(ensembleTest1);</span>
+
+		//enleve le premier ensemble de la liste
+<span class="nc" id="L112">		toTest.removeItem(ensembleTest);</span>
+<span class="nc" id="L113">		assertEquals(&quot;Apres un retrait dans une liste de taille 2 ,la taille de liste  doit etre 1 &quot;,1,toTest.getSize());</span>
+
+
+<span class="nc" id="L116">	}</span>
+	/***
+	 * enlever un item qui n'existe pas dans une liste
+	 * The function must throw a null pointer exception
+	 */
+	@Test(expected=NullPointerException.class)
+	public void removeNonExistingItemTest(){
+		//create list and add some fake data
+<span class="nc" id="L124">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L125">		toTest.add(ensembleTest);</span>
+<span class="nc" id="L126">		toTest.add(ensembleTest1);</span>
+<span class="nc" id="L127">		ArrayList&lt;Object&gt; fakeEnsemble = new ArrayList&lt;Object&gt;(Arrays.asList(12,67));</span>
+
+		//enleve le premier ensemble de la liste
+<span class="nc" id="L130">		toTest.removeItem(fakeEnsemble);</span>
+
+<span class="nc" id="L132">	}</span>
+	/***
+	 * enlever un element situer a une position valide dans la liste
+	 */
+	@Test
+	public void setAtValidPositionTest(){
+<span class="nc" id="L138">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L139">		toTest.add(ensembleTest);</span>
+<span class="nc" id="L140">		toTest.add(ensembleTest1);</span>
+
+<span class="nc" id="L142">		ArrayList&lt;Object&gt; newEnsemble = new ArrayList&lt;Object&gt;(Arrays.asList(12,67));</span>
+		//set ensemble at position 2 
+<span class="nc" id="L144">		toTest.setAt(newEnsemble, 1);</span>
+<span class="nc" id="L145">		assertTrue(&quot;Apres modification, lensembles ajouter et celui dans la liste doivent etre les memesm&quot;</span>
+<span class="nc" id="L146">				+ &quot; &quot;,toTest.getAt(1).equals(newEnsemble));</span>
+
+<span class="nc" id="L148">	}</span>
+
+	/***
+	 * enlever un element situer a une position invalide dans la liste
+	 */
+	@Test(expected=ArrayIndexOutOfBoundsException.class)
+	public void setAtInvalidPositionTest() {
+<span class="nc" id="L155">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L156">		toTest.add(ensembleTest);</span>
+<span class="nc" id="L157">		toTest.add(ensembleTest1);</span>
+
+<span class="nc" id="L159">		ArrayList&lt;Object&gt; newEnsemble = new ArrayList&lt;Object&gt;(Arrays.asList(12,67));</span>
+		//set ensemble at inexesting position 90 par e.g
+<span class="nc" id="L161">		toTest.setAt(newEnsemble, 90);</span>
+<span class="nc" id="L162">	}</span>
+
+	/***
+	 * recuperer un element situer a une position valide dans la liste
+	 */
+	@Test
+	public void getAtValidPositionTest(){
+<span class="nc" id="L169">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L170">		toTest.add(ensembleTest);</span>
+<span class="nc" id="L171">		toTest.add(ensembleTest1);</span>
+	    
+<span class="nc" id="L173">		ArrayList&lt;Object&gt; givenArray = toTest.getAt(1);</span>
+<span class="nc" id="L174">		assertTrue(&quot;l&lt;ojbet a la position doit etre l'ensemble 1 &quot;,givenArray.equals(ensembleTest1));</span>
+		
+<span class="nc" id="L176">	}</span>
+
+	/***
+	 * recuperer un element situer a une position invalide dans la liste
+	 */
+	@Test(expected=ArrayIndexOutOfBoundsException.class)
+	public void getAtInvalidPositionTest() {
+<span class="nc" id="L183">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L184">		toTest.add(ensembleTest);</span>
+<span class="nc" id="L185">		toTest.add(ensembleTest1);</span>
+	    //try to get item at invalid position 900 par exemple
+<span class="nc" id="L187">		toTest.getAt(90);</span>
+<span class="nc" id="L188">	}</span>
+
+	/***
+	 * tester la recuperation de  la taille d'une liste remplie
+	 */
+	@Test
+	public void  getSizeTest(){
+<span class="nc" id="L195">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L196">		toTest.add(ensembleTest);</span>
+<span class="nc" id="L197">		toTest.add(ensembleTest1);</span>
+
+		//la taille doit etre 2 
+<span class="nc" id="L200">		assertEquals(&quot;la taille de la liste doit etre 2 &quot;,2,toTest.getSize());</span>
+<span class="nc" id="L201">	}</span>
+
+	/***
+	 * tester la recuperation de  la taille d'une liste qui est vide
+	 */
+	@Test
+	public void  getEmptyListSizeTest(){
+<span class="nc" id="L208">		MyList toTest = new MyListImpl();	</span>
+
+		//la taille doit etre 2 
+<span class="nc" id="L211">		assertEquals(&quot;la taille de la liste doit etre 0 &quot;,0,toTest.getSize());</span>
+<span class="nc" id="L212">	}</span>
+
+	/**
+	 * test de la restauration d'une liste a son etat initial
+	 * The list must be empty after reset(size =0 ) 
+	 */
+	@Test
+	public void  resetTest(){
+<span class="nc" id="L220">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L221">		toTest.add(ensembleTest);</span>
+<span class="nc" id="L222">		toTest.add(ensembleTest1);</span>
+
+		//la taille doit etre -1 apres le clear
+<span class="nc" id="L225">		toTest.reset();</span>
+<span class="nc" id="L226">		assertEquals(&quot;la liste doi etre nulle (de taille 0)&quot;,0,toTest.getSize());</span>
+<span class="nc" id="L227">	}</span>
+
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>ListeChaineeImplTest_EC (2016-10-17 10:23:01)</div></body></html>

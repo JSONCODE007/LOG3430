@@ -7,9 +7,11 @@
  * @summary			:  linkedList object 
  * 						based on "external reference" 
  */
-package main;
+package liste_tp3;
 
 import java.util.ArrayList;
+
+import main.MyList;
 
 public class MyListImpl implements MyList{
 	private Elem start;

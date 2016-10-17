@@ -4,10 +4,14 @@
  * @author	 		: Ons mlouki
  * 					  Ons.mlouki@gmail.com
  */
-package main;
+package liste_tp3;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import main.ListeChainee;
+import main.MyList;
+import main.SetCalculator;
 
 public class ListeChaineeImpl implements ListeChainee {
 	
