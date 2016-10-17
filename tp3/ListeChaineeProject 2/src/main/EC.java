@@ -214,7 +214,7 @@ public class EC {
 		//given values for test proposal
 		ListeChainee suiteChainee= new ListeChaineeImpl();
 		MyList toTest = suiteChainee.build("invalid", val1, val2);
-		fail("Specied Operation not supported");
+		//pass("Specied Operation not supported");
 	}
 	
 	/**
@@ -443,14 +443,66 @@ public class EC {
 		//create list and add some fake data
 		MyList toTest = new MyListImpl();	
 		toTest.add(ensembleTest);
-		toTest.add(ensembleTest);
 
 		//remove second item
 		toTest.removeAt(0);
-		assertEquals("Apres un retrait dans une liste de taille 2 ,la taille de liste  doit etre 1 ",1,toTest.getSize());
+		System.out.println("size:"+toTest.getSize());
+		assertEquals("Apres un retrait dans une liste de taille 2 ,la taille de liste  doit etre 1 ",0,toTest.getSize());
 	}
 	
+	/**
+	 * union test pour couvrir le removeAt
+	 * LA branche else de cette condition  if(!setA.contains(a)) est pas couverte
+	 * @throws IOException 
+	 */
+	@Test
+	public void  removeAt02_WhiteBox() throws IOException{
+		ArrayList<Object> val1 = new ArrayList<Object>(Arrays.asList(84,-1));
+		ArrayList<Object> val2 = new ArrayList<Object>(Arrays.asList(81,-3));
+		//create list and add some fake data
+		MyList toTest = new MyListImpl();	
+		toTest.add(ensembleTest);
+		toTest.add(ensembleTest);
+		toTest.add(val1);
+		toTest.add(val2);
+		//remove second item
+		toTest.removeAt(2);
+		assertEquals("Apres un retrait dans une liste de taille 4  ,la taille de liste  doit etre 3 ",3,toTest.getSize());
+	}
 	
-	
+	/**
+	 * remove un item dans une liste vide
+	 * LA branche else de cette condition  if(!setA.contains(a)) est pas couverte
+	 * @throws IOException 
+	 */
+	@Test(expected=NullPointerException.class)
+	public void  removeItem01_WhiteBox() throws IOException{
+		//create list and add some fake data
+		MyList toTest = new MyListImpl();	
+
+		//remove  item qui nexiste pas dans une liste vide
+ 	    toTest.removeItem(ensembleTest);
+	}
+	/**
+	 * supprimer une liste avec une plus grande taille pour iterer le plus possible dans le while
+	 * LA branche else de cette condition  if(!setA.contains(a)) est pas couverte
+	 * @throws IOException 
+	 */
+	@Test
+	public void  removeItem02_WhiteBox() throws IOException{
+		ArrayList<Object> val1 = new ArrayList<Object>(Arrays.asList(84,-1));
+		ArrayList<Object> val2 = new ArrayList<Object>(Arrays.asList(81,-3));
+		
+		//create list and add some fake data
+		MyList toTest = new MyListImpl();	
+		toTest.add(ensembleTest);
+		toTest.add(ensembleTest1);
+		toTest.add(val1);
+		toTest.add(val2);
+
+		//remove  item qui nexiste pas dans une liste vide
+ 		toTest.removeItem(val1);
+		assertEquals("Apres un retrait dans une liste de taille 2 ,la taille de liste  doit etre 1 ",3,toTest.getSize());
+	}
 
 }
