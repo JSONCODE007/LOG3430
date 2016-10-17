@@ -16,3 +16,7 @@ bin/
 
 #ignore tp1 cauze we dont need it anymore
 tp1/
+
+
+#ignore tp2 files 
+tp2/
