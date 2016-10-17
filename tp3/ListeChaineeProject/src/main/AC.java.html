@@ -1,0 +1,1825 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>AC.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">EC (2016-10-17 10:45:20)</a> &gt; <a href="../../index.html" class="el_group">ListeChaineeProject</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">main</a> &gt; <span class="el_source">AC.java</span></div><h1>AC.java</h1><pre class="source lang-java linenums">/**
+ * 
+ */
+package main;
+
+import static org.junit.Assert.*;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import liste_tp3.ListeChaineeImpl;
+import liste_tp3.MyListImpl;
+
+/**
+ * Cette fonction teste la liste chainee via AC
+ * @author thierno and Tomas
+ *
+ */
+<span class="nc" id="L26">public class AC {</span>
+
+<span class="nc" id="L28">	ArrayList&lt;Object&gt; ensembleTest = new ArrayList&lt;Object&gt;(Arrays.asList(4,1));</span>
+<span class="nc" id="L29">	ArrayList&lt;Object&gt; ensembleTest1 = new ArrayList&lt;Object&gt;(Arrays.asList(12,67)); </span>
+	
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+<span class="nc" id="L36">	}</span>
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+<span class="nc" id="L43">	}</span>
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@Before
+	public void setUp() throws Exception {
+		
+<span class="nc" id="L51">	}</span>
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@After
+	public void tearDown() throws Exception {
+<span class="nc" id="L58">	}</span>
+
+	/***
+	 *  union operation test case
+	 *  val1 est un ensemble vide 
+	 *  val2 ensemble vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void unionOpTest1() throws IOException {
+
+		//initiate values
+<span class="nc" id="L70">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L71">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L72">		ArrayList&lt;Object&gt; unionVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+
+		//given values for test proposal
+<span class="nc" id="L75">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L76">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L77">		toTest = suiteChainee.build(&quot;union&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L80">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L81">		exceptedResult.add(val1);</span>
+<span class="nc" id="L82">		exceptedResult.add(val2);</span>
+<span class="nc" id="L83">		exceptedResult.add(unionVal1Val2);</span>
+
+<span class="nc" id="L85">		assertTrue(&quot;Resultat de l'union doit etre [[], [], []]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L87">	}</span>
+	
+	/***
+	 *  union operation test case
+	 *  val1 est un ensemble non-vide 
+	 *  val2 ensemble vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void unionOpTest2() throws IOException {
+
+		//initiate values
+<span class="nc" id="L99">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(2,3));</span>
+<span class="nc" id="L100">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L101">		ArrayList&lt;Object&gt; unionVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(2,3));</span>
+
+		//given values for test proposal
+<span class="nc" id="L104">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L105">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L106">		toTest = suiteChainee.build(&quot;union&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L109">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L110">		exceptedResult.add(val1);</span>
+<span class="nc" id="L111">		exceptedResult.add(val2);</span>
+<span class="nc" id="L112">		exceptedResult.add(unionVal1Val2);</span>
+
+<span class="nc" id="L114">		assertTrue(&quot;Resultat de l'union doit etre [[2,3], [], [2,3]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L116">	}</span>
+	
+	/***
+	 *  union operation test case
+	 *  val1 est un ensemble vide 
+	 *  val2 ensemble non-vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void unionOpTest3() throws IOException {
+
+		//initiate values
+<span class="nc" id="L128">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L129">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(3,4));</span>
+<span class="nc" id="L130">		ArrayList&lt;Object&gt; unionVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(3,4));</span>
+
+		//given values for test proposal
+<span class="nc" id="L133">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L134">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L135">		toTest = suiteChainee.build(&quot;union&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L138">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L139">		exceptedResult.add(val1);</span>
+<span class="nc" id="L140">		exceptedResult.add(val2);</span>
+<span class="nc" id="L141">		exceptedResult.add(unionVal1Val2);</span>
+
+<span class="nc" id="L143">		assertTrue(&quot;Resultat de l'union doit etre [[], [3,4], [3,4]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L145">	}</span>
+	
+	
+	/***
+	 *  union operation test case
+	 *  val1 est un ensemble non-vide 
+	 *  val2 ensemble non-vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void unionOpTest4() throws IOException {
+
+		//initiate values
+<span class="nc" id="L158">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(5,6));</span>
+<span class="nc" id="L159">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(3,4));</span>
+<span class="nc" id="L160">		ArrayList&lt;Object&gt; unionVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,6,3,4));</span>
+
+		//given values for test proposal
+<span class="nc" id="L163">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L164">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L165">		toTest = suiteChainee.build(&quot;union&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L168">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L169">		exceptedResult.add(val1);</span>
+<span class="nc" id="L170">		exceptedResult.add(val2);</span>
+<span class="nc" id="L171">		exceptedResult.add(unionVal1Val2);</span>
+
+<span class="nc" id="L173">		assertTrue(&quot;Resultat de l'union doit etre [[5,6], [3,4], [5,6,3,4]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L175">	}</span>
+	
+	/***
+	 *  union operation test case
+	 *  val1 est un ensemble non-vide avec doublons
+	 *  val2 ensemble vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void unionOpTest5() throws IOException {
+
+		//initiate values
+<span class="nc" id="L187">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(5,6,6));</span>
+<span class="nc" id="L188">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L189">		ArrayList&lt;Object&gt; unionVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,6,6));</span>
+
+		//given values for test proposal
+<span class="nc" id="L192">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L193">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L194">		toTest = suiteChainee.build(&quot;union&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L197">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L198">		exceptedResult.add(val1);</span>
+<span class="nc" id="L199">		exceptedResult.add(val2);</span>
+<span class="nc" id="L200">		exceptedResult.add(unionVal1Val2);</span>
+
+<span class="nc" id="L202">		assertTrue(&quot;Resultat de l'union doit etre [[5,6,6], [], [5,6,6]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L204">	}</span>
+	
+	/***
+	 *  union operation test case
+	 *  val1 est un ensemble vide 
+	 *  val2 ensemble non-vide avec doublons
+	 * @throws IOException 
+	 */
+	@Test
+	public void unionOpTest6() throws IOException {
+
+		//initiate values
+<span class="nc" id="L216">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L217">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,8,8));</span>
+<span class="nc" id="L218">		ArrayList&lt;Object&gt; unionVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,8,8));</span>
+
+		//given values for test proposal
+<span class="nc" id="L221">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L222">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L223">		toTest = suiteChainee.build(&quot;union&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L226">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L227">		exceptedResult.add(val1);</span>
+<span class="nc" id="L228">		exceptedResult.add(val2);</span>
+<span class="nc" id="L229">		exceptedResult.add(unionVal1Val2);</span>
+
+<span class="nc" id="L231">		assertTrue(&quot;Resultat de l'union doit etre [[], [5,8,8], [5,8,8]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L233">	}</span>
+
+
+	/***
+	 *  union operation test case
+	 *  val1 est un ensemble non-vide 
+	 *  val2 ensemble non-vide avec doublons
+	 * @throws IOException 
+	 */
+	@Test
+	public void unionOpTest7() throws IOException {
+
+		//initiate values
+<span class="nc" id="L246">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(7,8));</span>
+<span class="nc" id="L247">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,8,8));</span>
+<span class="nc" id="L248">		ArrayList&lt;Object&gt; unionVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(7,8,5));</span>
+
+		//given values for test proposal
+<span class="nc" id="L251">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L252">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L253">		toTest = suiteChainee.build(&quot;union&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L256">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L257">		exceptedResult.add(val1);</span>
+<span class="nc" id="L258">		exceptedResult.add(val2);</span>
+<span class="nc" id="L259">		exceptedResult.add(unionVal1Val2);</span>
+
+<span class="nc" id="L261">		assertTrue(&quot;Resultat de l'union doit etre [[7,8], [5,8,8], [7,8,5]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L263">	}</span>
+	
+	/***
+	 *  union operation test case
+	 *  val1 est un ensemble non-vide avec doublons
+	 *  val2 ensemble non-vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void unionOpTest8() throws IOException {
+
+		//initiate values
+<span class="nc" id="L275">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(7,8,8));</span>
+<span class="nc" id="L276">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,9,10,8));</span>
+<span class="nc" id="L277">		ArrayList&lt;Object&gt; unionVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(7,8,8,5,9,10));</span>
+
+		//given values for test proposal
+<span class="nc" id="L280">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L281">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L282">		toTest = suiteChainee.build(&quot;union&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L285">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L286">		exceptedResult.add(val1);</span>
+<span class="nc" id="L287">		exceptedResult.add(val2);</span>
+<span class="nc" id="L288">		exceptedResult.add(unionVal1Val2);</span>
+
+<span class="nc" id="L290">		assertTrue(&quot;Resultat de l'union doit etre [[7,8,8], [5,9,10,8], [7,8,8,5,9,10]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L292">	}</span>
+	
+	/***
+	 *  union operation test case
+	 *  val1 est un ensemble non-vide avec doublons
+	 *  val2 ensemble non-vide avec doublons
+	 * @throws IOException 
+	 */
+	@Test
+	public void unionOpTest9() throws IOException {
+
+		//initiate values
+<span class="nc" id="L304">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(7,8,8));</span>
+<span class="nc" id="L305">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,9,10,4,8,4));</span>
+<span class="nc" id="L306">		ArrayList&lt;Object&gt; unionVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(7,8,8,5,9,10,4,4));</span>
+
+		//given values for test proposal
+<span class="nc" id="L309">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L310">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L311">		toTest = suiteChainee.build(&quot;union&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L314">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L315">		exceptedResult.add(val1);</span>
+<span class="nc" id="L316">		exceptedResult.add(val2);</span>
+<span class="nc" id="L317">		exceptedResult.add(unionVal1Val2);</span>
+
+<span class="nc" id="L319">		assertTrue(&quot;Resultat de l'union doit etre [[7,8], [5,9,10,4,8,4], [7,8,8,5,9,10,4,4]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L321">	}</span>
+	
+	
+	/***
+	 *  intersection operation test case
+	 *  val1 est un ensemble vide 
+	 *  val2 ensemble vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void intersectionOpTest1() throws IOException {
+
+		//initiate values
+<span class="nc" id="L334">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L335">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L336">		ArrayList&lt;Object&gt; intersectionVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+
+		//given values for test proposal
+<span class="nc" id="L339">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L340">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L341">		toTest = suiteChainee.build(&quot;intersection&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L344">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L345">		exceptedResult.add(val1);</span>
+<span class="nc" id="L346">		exceptedResult.add(val2);</span>
+<span class="nc" id="L347">		exceptedResult.add(intersectionVal1Val2);</span>
+
+<span class="nc" id="L349">		assertTrue(&quot;Resultat de l'intersection doit etre [[], [], []]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L351">	}</span>
+	
+	/***
+	 *  intersection operation test case
+	 *  val1 est un ensemble non-vide 
+	 *  val2 ensemble vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void intersectionOpTest2() throws IOException {
+
+		//initiate values
+<span class="nc" id="L363">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(2,3));</span>
+<span class="nc" id="L364">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L365">		ArrayList&lt;Object&gt; intersectionVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+
+		//given values for test proposal
+<span class="nc" id="L368">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L369">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L370">		toTest = suiteChainee.build(&quot;intersection&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L373">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L374">		exceptedResult.add(val1);</span>
+<span class="nc" id="L375">		exceptedResult.add(val2);</span>
+<span class="nc" id="L376">		exceptedResult.add(intersectionVal1Val2);</span>
+
+<span class="nc" id="L378">		assertTrue(&quot;Resultat de l'intersection doit etre [[2,3], [], []]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L380">	}</span>
+	
+	/***
+	 *  intersection operation test case
+	 *  val1 est un ensemble vide 
+	 *  val2 ensemble non-vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void intersectionOpTest3() throws IOException {
+
+		//initiate values
+<span class="nc" id="L392">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L393">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(3,4));</span>
+<span class="nc" id="L394">		ArrayList&lt;Object&gt; intersectionVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+
+		//given values for test proposal
+<span class="nc" id="L397">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L398">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L399">		toTest = suiteChainee.build(&quot;intersection&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L402">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L403">		exceptedResult.add(val1);</span>
+<span class="nc" id="L404">		exceptedResult.add(val2);</span>
+<span class="nc" id="L405">		exceptedResult.add(intersectionVal1Val2);</span>
+
+<span class="nc" id="L407">		assertTrue(&quot;Resultat de l'intersection doit etre [[], [3,4], []]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L409">	}</span>
+	
+	
+	/***
+	 *  intersection operation test case
+	 *  val1 est un ensemble non-vide 
+	 *  val2 ensemble non-vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void intersectionOpTest4() throws IOException {
+
+		//initiate values
+<span class="nc" id="L422">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(5,6,0,9));</span>
+<span class="nc" id="L423">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(3,4,9,11,5));</span>
+<span class="nc" id="L424">		ArrayList&lt;Object&gt; intersectionVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,9));</span>
+
+		//given values for test proposal
+<span class="nc" id="L427">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L428">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L429">		toTest = suiteChainee.build(&quot;intersection&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L432">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L433">		exceptedResult.add(val1);</span>
+<span class="nc" id="L434">		exceptedResult.add(val2);</span>
+<span class="nc" id="L435">		exceptedResult.add(intersectionVal1Val2);</span>
+
+<span class="nc" id="L437">		assertTrue(&quot;Resultat de l'intersection doit etre [[5,6,0,9], [3,4,9,11,5], [5,9]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L439">	}</span>
+	
+	/***
+	 *  intersection operation test case
+	 *  val1 est un ensemble non-vide avec doublons
+	 *  val2 ensemble vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void intersectionOpTest5() throws IOException {
+
+		//initiate values
+<span class="nc" id="L451">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(5,6,6));</span>
+<span class="nc" id="L452">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L453">		ArrayList&lt;Object&gt; intersectionVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+
+		//given values for test proposal
+<span class="nc" id="L456">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L457">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L458">		toTest = suiteChainee.build(&quot;intersection&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L461">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L462">		exceptedResult.add(val1);</span>
+<span class="nc" id="L463">		exceptedResult.add(val2);</span>
+<span class="nc" id="L464">		exceptedResult.add(intersectionVal1Val2);</span>
+
+<span class="nc" id="L466">		assertTrue(&quot;Resultat de l'intersection doit etre [[5,6,6], [], []]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L468">	}</span>
+	
+	/***
+	 *  intersection operation test case
+	 *  val1 est un ensemble vide 
+	 *  val2 ensemble non-vide avec doublons
+	 * @throws IOException 
+	 */
+	@Test
+	public void intersectionOpTest6() throws IOException {
+
+		//initiate values
+<span class="nc" id="L480">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L481">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,8,8));</span>
+<span class="nc" id="L482">		ArrayList&lt;Object&gt; intersectionVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+
+		//given values for test proposal
+<span class="nc" id="L485">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L486">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L487">		toTest = suiteChainee.build(&quot;intersection&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L490">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L491">		exceptedResult.add(val1);</span>
+<span class="nc" id="L492">		exceptedResult.add(val2);</span>
+<span class="nc" id="L493">		exceptedResult.add(intersectionVal1Val2);</span>
+
+<span class="nc" id="L495">		assertTrue(&quot;Resultat de l'intersection doit etre [[], [5,8,8], []]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L497">	}</span>
+
+
+	/***
+	 *  intersection operation test case
+	 *  val1 est un ensemble non-vide 
+	 *  val2 ensemble non-vide avec doublons
+	 * @throws IOException 
+	 */
+	@Test
+	public void intersectionOpTest7() throws IOException {
+
+		//initiate values
+<span class="nc" id="L510">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(7,8));</span>
+<span class="nc" id="L511">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,8,8));</span>
+<span class="nc" id="L512">		ArrayList&lt;Object&gt; intersectionVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(8));</span>
+
+		//given values for test proposal
+<span class="nc" id="L515">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L516">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L517">		toTest = suiteChainee.build(&quot;intersection&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L520">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L521">		exceptedResult.add(val1);</span>
+<span class="nc" id="L522">		exceptedResult.add(val2);</span>
+<span class="nc" id="L523">		exceptedResult.add(intersectionVal1Val2);</span>
+
+<span class="nc" id="L525">		assertTrue(&quot;Resultat de l'intersection doit etre [[7,8], [5,8,8], [8]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L527">	}</span>
+	
+	/***
+	 *  intersection operation test case
+	 *  val1 est un ensemble non-vide avec doublons
+	 *  val2 ensemble non-vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void intersectionOpTest8() throws IOException {
+
+		//initiate values
+<span class="nc" id="L539">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(7,8,8));</span>
+<span class="nc" id="L540">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,9,10,8));</span>
+<span class="nc" id="L541">		ArrayList&lt;Object&gt; intersectionVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(8,8));</span>
+
+		//given values for test proposal
+<span class="nc" id="L544">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L545">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L546">		toTest = suiteChainee.build(&quot;intersection&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L549">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L550">		exceptedResult.add(val1);</span>
+<span class="nc" id="L551">		exceptedResult.add(val2);</span>
+<span class="nc" id="L552">		exceptedResult.add(intersectionVal1Val2);</span>
+
+<span class="nc" id="L554">		assertTrue(&quot;Resultat de l'intersection doit etre [[7,8,8], [5,9,10,8], [8,8]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L556">	}</span>
+	
+	/***
+	 *  intersection operation test case
+	 *  val1 est un ensemble non-vide avec doublons
+	 *  val2 ensemble non-vide avec doublons
+	 * @throws IOException 
+	 */
+	@Test
+	public void intersectionOpTest9() throws IOException {
+
+		//initiate values
+<span class="nc" id="L568">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(7,8,8,10,4));</span>
+<span class="nc" id="L569">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,9,10,4,8,4));</span>
+<span class="nc" id="L570">		ArrayList&lt;Object&gt; intersectionVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(8,8,10,4));</span>
+
+		//given values for test proposal
+<span class="nc" id="L573">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L574">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L575">		toTest = suiteChainee.build(&quot;intersection&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L578">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L579">		exceptedResult.add(val1);</span>
+<span class="nc" id="L580">		exceptedResult.add(val2);</span>
+<span class="nc" id="L581">		exceptedResult.add(intersectionVal1Val2);</span>
+
+<span class="nc" id="L583">		assertTrue(&quot;Resultat de l'intersection doit etre [[7,8,8,10,4], [5,9,10,4,8,4], [8,8,10,4]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L585">	}</span>
+	
+	/***
+	 *  difference operation test case
+	 *  val1 est un ensemble vide 
+	 *  val2 ensemble vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void differenceOpTest1() throws IOException {
+
+		//initiate values
+<span class="nc" id="L597">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L598">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L599">		ArrayList&lt;Object&gt; differenceVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+
+		//given values for test proposal
+<span class="nc" id="L602">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L603">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L604">		toTest = suiteChainee.build(&quot;difference&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L607">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L608">		exceptedResult.add(val1);</span>
+<span class="nc" id="L609">		exceptedResult.add(val2);</span>
+<span class="nc" id="L610">		exceptedResult.add(differenceVal1Val2);</span>
+
+<span class="nc" id="L612">		assertTrue(&quot;Resultat de la difference doit etre [[], [], []]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L614">	}</span>
+	
+	/***
+	 *  difference operation test case
+	 *  val1 est un ensemble non-vide 
+	 *  val2 ensemble vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void differenceOpTest2() throws IOException {
+
+		//initiate values
+<span class="nc" id="L626">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(2,3));</span>
+<span class="nc" id="L627">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L628">		ArrayList&lt;Object&gt; differenceVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(2,3));</span>
+
+		//given values for test proposal
+<span class="nc" id="L631">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L632">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L633">		toTest = suiteChainee.build(&quot;difference&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L636">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L637">		exceptedResult.add(val1);</span>
+<span class="nc" id="L638">		exceptedResult.add(val2);</span>
+<span class="nc" id="L639">		exceptedResult.add(differenceVal1Val2);</span>
+
+<span class="nc" id="L641">		assertTrue(&quot;Resultat de la difference doit etre [[2,3], [], [2,3]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L643">	}</span>
+	
+	/***
+	 *  difference operation test case
+	 *  val1 est un ensemble vide 
+	 *  val2 ensemble non-vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void differenceOpTest3() throws IOException {
+
+		//initiate values
+<span class="nc" id="L655">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L656">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(3,4));</span>
+<span class="nc" id="L657">		ArrayList&lt;Object&gt; differenceVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+
+		//given values for test proposal
+<span class="nc" id="L660">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L661">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L662">		toTest = suiteChainee.build(&quot;difference&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L665">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L666">		exceptedResult.add(val1);</span>
+<span class="nc" id="L667">		exceptedResult.add(val2);</span>
+<span class="nc" id="L668">		exceptedResult.add(differenceVal1Val2);</span>
+
+<span class="nc" id="L670">		assertTrue(&quot;Resultat de la difference doit etre [[], [3,4], []]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L672">	}</span>
+	
+	
+	/***
+	 *  difference operation test case
+	 *  val1 est un ensemble non-vide 
+	 *  val2 ensemble non-vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void differenceOpTest4() throws IOException {
+
+		//initiate values
+<span class="nc" id="L685">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(5,6,0,9));</span>
+<span class="nc" id="L686">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(3,4,9,11,5));</span>
+<span class="nc" id="L687">		ArrayList&lt;Object&gt; differenceVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(6,0));</span>
+
+		//given values for test proposal
+<span class="nc" id="L690">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L691">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L692">		toTest = suiteChainee.build(&quot;difference&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L695">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L696">		exceptedResult.add(val1);</span>
+<span class="nc" id="L697">		exceptedResult.add(val2);</span>
+<span class="nc" id="L698">		exceptedResult.add(differenceVal1Val2);</span>
+
+<span class="nc" id="L700">		assertTrue(&quot;Resultat de la difference doit etre [[5,6,0,9], [3,4,9,11,5], [6,0]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L702">	}</span>
+	
+	/***
+	 *  difference operation test case
+	 *  val1 est un ensemble non-vide avec doublons
+	 *  val2 ensemble vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void differenceOpTest5() throws IOException {
+
+		//initiate values
+<span class="nc" id="L714">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(5,6,6));</span>
+<span class="nc" id="L715">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L716">		ArrayList&lt;Object&gt; differenceVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,6,6));</span>
+
+		//given values for test proposal
+<span class="nc" id="L719">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L720">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L721">		toTest = suiteChainee.build(&quot;difference&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L724">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L725">		exceptedResult.add(val1);</span>
+<span class="nc" id="L726">		exceptedResult.add(val2);</span>
+<span class="nc" id="L727">		exceptedResult.add(differenceVal1Val2);</span>
+
+<span class="nc" id="L729">		assertTrue(&quot;Resultat de la difference doit etre [[5,6,6], [], [5,6,6]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L731">	}</span>
+	
+	/***
+	 *  difference operation test case
+	 *  val1 est un ensemble vide 
+	 *  val2 ensemble non-vide avec doublons
+	 * @throws IOException 
+	 */
+	@Test
+	public void differenceOpTest6() throws IOException {
+
+		//initiate values
+<span class="nc" id="L743">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L744">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,8,8));</span>
+<span class="nc" id="L745">		ArrayList&lt;Object&gt; differenceVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+
+		//given values for test proposal
+<span class="nc" id="L748">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L749">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L750">		toTest = suiteChainee.build(&quot;difference&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L753">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L754">		exceptedResult.add(val1);</span>
+<span class="nc" id="L755">		exceptedResult.add(val2);</span>
+<span class="nc" id="L756">		exceptedResult.add(differenceVal1Val2);</span>
+
+<span class="nc" id="L758">		assertTrue(&quot;Resultat de la difference doit etre [[], [5,8,8], []]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L760">	}</span>
+
+
+	/***
+	 *  difference operation test case
+	 *  val1 est un ensemble non-vide 
+	 *  val2 ensemble non-vide avec doublons
+	 * @throws IOException 
+	 */
+	@Test
+	public void differenceOpTest7() throws IOException {
+
+		//initiate values
+<span class="nc" id="L773">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(7,8));</span>
+<span class="nc" id="L774">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,8,8));</span>
+<span class="nc" id="L775">		ArrayList&lt;Object&gt; differenceVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(7));</span>
+
+		//given values for test proposal
+<span class="nc" id="L778">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L779">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L780">		toTest = suiteChainee.build(&quot;difference&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L783">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L784">		exceptedResult.add(val1);</span>
+<span class="nc" id="L785">		exceptedResult.add(val2);</span>
+<span class="nc" id="L786">		exceptedResult.add(differenceVal1Val2);</span>
+
+<span class="nc" id="L788">		assertTrue(&quot;Resultat de la difference doit etre [[7,8], [5,8,8], [7]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L790">	}</span>
+	
+	/***
+	 *  difference operation test case
+	 *  val1 est un ensemble non-vide avec doublons
+	 *  val2 ensemble non-vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void differenceOpTest8() throws IOException {
+
+		//initiate values
+<span class="nc" id="L802">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(7,8,8));</span>
+<span class="nc" id="L803">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,9,10,8));</span>
+<span class="nc" id="L804">		ArrayList&lt;Object&gt; differenceVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(7));</span>
+
+		//given values for test proposal
+<span class="nc" id="L807">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L808">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L809">		toTest = suiteChainee.build(&quot;difference&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L812">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L813">		exceptedResult.add(val1);</span>
+<span class="nc" id="L814">		exceptedResult.add(val2);</span>
+<span class="nc" id="L815">		exceptedResult.add(differenceVal1Val2);</span>
+
+<span class="nc" id="L817">		assertTrue(&quot;Resultat de la difference doit etre [[7,8,8], [5,9,10,8], [7]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L819">	}</span>
+	
+	/***
+	 *  difference operation test case
+	 *  val1 est un ensemble non-vide avec doublons
+	 *  val2 ensemble non-vide avec doublons
+	 * @throws IOException 
+	 */
+	@Test
+	public void differenceOpTest9() throws IOException {
+
+		//initiate values
+<span class="nc" id="L831">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(7,8,8,10,4));</span>
+<span class="nc" id="L832">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,9,10,4,8,4));</span>
+<span class="nc" id="L833">		ArrayList&lt;Object&gt; differenceVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(7));</span>
+
+		//given values for test proposal
+<span class="nc" id="L836">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L837">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L838">		toTest = suiteChainee.build(&quot;difference&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L841">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L842">		exceptedResult.add(val1);</span>
+<span class="nc" id="L843">		exceptedResult.add(val2);</span>
+<span class="nc" id="L844">		exceptedResult.add(differenceVal1Val2);</span>
+
+<span class="nc" id="L846">		assertTrue(&quot;Resultat de la difference doit etre [[7,8,8,10,4], [5,9,10,4,8,4], [7]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L848">	}</span>
+	
+	/***
+	 *  symDifference operation test case
+	 *  val1 est un ensemble vide 
+	 *  val2 ensemble vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void symDifferenceOpTest1() throws IOException {
+
+		//initiate values
+<span class="nc" id="L860">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L861">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L862">		ArrayList&lt;Object&gt; symDifferenceVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+
+		//given values for test proposal
+<span class="nc" id="L865">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L866">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L867">		toTest = suiteChainee.build(&quot;symDifference&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L870">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L871">		exceptedResult.add(val1);</span>
+<span class="nc" id="L872">		exceptedResult.add(val2);</span>
+<span class="nc" id="L873">		exceptedResult.add(symDifferenceVal1Val2);</span>
+
+<span class="nc" id="L875">		assertTrue(&quot;Resultat de la difference symetrique doit etre [[], [], []]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L877">	}</span>
+	
+	/***
+	 *  symDifference operation test case
+	 *  val1 est un ensemble non-vide 
+	 *  val2 ensemble vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void symDifferenceOpTest2() throws IOException {
+
+		//initiate values
+<span class="nc" id="L889">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(2,3));</span>
+<span class="nc" id="L890">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L891">		ArrayList&lt;Object&gt; symDifferenceVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(2,3));</span>
+
+		//given values for test proposal
+<span class="nc" id="L894">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L895">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L896">		toTest = suiteChainee.build(&quot;symDifference&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L899">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L900">		exceptedResult.add(val1);</span>
+<span class="nc" id="L901">		exceptedResult.add(val2);</span>
+<span class="nc" id="L902">		exceptedResult.add(symDifferenceVal1Val2);</span>
+
+<span class="nc" id="L904">		assertTrue(&quot;Resultat de la difference symetrique doit etre [[2,3], [], [2,3]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L906">	}</span>
+	
+	/***
+	 *  symDifference operation test case
+	 *  val1 est un ensemble vide 
+	 *  val2 ensemble non-vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void symDifferenceOpTest3() throws IOException {
+
+		//initiate values
+<span class="nc" id="L918">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L919">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(3,4));</span>
+<span class="nc" id="L920">		ArrayList&lt;Object&gt; symDifferenceVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(3,4));</span>
+
+		//given values for test proposal
+<span class="nc" id="L923">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L924">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L925">		toTest = suiteChainee.build(&quot;symDifference&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L928">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L929">		exceptedResult.add(val1);</span>
+<span class="nc" id="L930">		exceptedResult.add(val2);</span>
+<span class="nc" id="L931">		exceptedResult.add(symDifferenceVal1Val2);</span>
+
+<span class="nc" id="L933">		assertTrue(&quot;Resultat de la difference symetrique doit etre [[], [3,4], [3,4]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L935">	}</span>
+	
+	
+	/***
+	 *  symDifference operation test case
+	 *  val1 est un ensemble non-vide 
+	 *  val2 ensemble non-vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void symDifferenceOpTest4() throws IOException {
+
+		//initiate values
+<span class="nc" id="L948">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(5,6,0,9));</span>
+<span class="nc" id="L949">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(3,4,9,11,5));</span>
+<span class="nc" id="L950">		ArrayList&lt;Object&gt; symDifferenceVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(6,0,3,4,11));</span>
+
+		//given values for test proposal
+<span class="nc" id="L953">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L954">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L955">		toTest = suiteChainee.build(&quot;symDifference&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L958">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L959">		exceptedResult.add(val1);</span>
+<span class="nc" id="L960">		exceptedResult.add(val2);</span>
+<span class="nc" id="L961">		exceptedResult.add(symDifferenceVal1Val2);</span>
+
+<span class="nc" id="L963">		assertTrue(&quot;Resultat de la difference symetrique doit etre [[5,6,0,9], [3,4,9,11,5], [6,0,3,4,11]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L965">	}</span>
+	
+	/***
+	 *  symDifference operation test case
+	 *  val1 est un ensemble non-vide avec doublons
+	 *  val2 ensemble vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void symDifferenceOpTest5() throws IOException {
+
+		//initiate values
+<span class="nc" id="L977">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(5,6,6));</span>
+<span class="nc" id="L978">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L979">		ArrayList&lt;Object&gt; symDifferenceVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,6,6));</span>
+
+		//given values for test proposal
+<span class="nc" id="L982">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L983">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L984">		toTest = suiteChainee.build(&quot;symDifference&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L987">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L988">		exceptedResult.add(val1);</span>
+<span class="nc" id="L989">		exceptedResult.add(val2);</span>
+<span class="nc" id="L990">		exceptedResult.add(symDifferenceVal1Val2);</span>
+
+<span class="nc" id="L992">		assertTrue(&quot;Resultat de la difference symetrique doit etre [[5,6,6], [], [5,6,6]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L994">	}</span>
+	
+	/***
+	 *  symDifference operation test case
+	 *  val1 est un ensemble vide 
+	 *  val2 ensemble non-vide avec doublons
+	 * @throws IOException 
+	 */
+	@Test
+	public void symDifferenceOpTest6() throws IOException {
+
+		//initiate values
+<span class="nc" id="L1006">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L1007">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,8,8));</span>
+<span class="nc" id="L1008">		ArrayList&lt;Object&gt; symDifferenceVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,8,8));</span>
+
+		//given values for test proposal
+<span class="nc" id="L1011">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1012">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L1013">		toTest = suiteChainee.build(&quot;symDifference&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L1016">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L1017">		exceptedResult.add(val1);</span>
+<span class="nc" id="L1018">		exceptedResult.add(val2);</span>
+<span class="nc" id="L1019">		exceptedResult.add(symDifferenceVal1Val2);</span>
+
+<span class="nc" id="L1021">		assertTrue(&quot;Resultat de la difference symetrique doit etre [[], [5,8,8], [5,8,8]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L1023">	}</span>
+
+
+	/***
+	 *  symDifference operation test case
+	 *  val1 est un ensemble non-vide 
+	 *  val2 ensemble non-vide avec doublons
+	 * @throws IOException 
+	 */
+	@Test
+	public void symDifferenceOpTest7() throws IOException {
+
+		//initiate values
+<span class="nc" id="L1036">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(7,8));</span>
+<span class="nc" id="L1037">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,8,8));</span>
+<span class="nc" id="L1038">		ArrayList&lt;Object&gt; symDifferenceVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(7,5));</span>
+
+		//given values for test proposal
+<span class="nc" id="L1041">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1042">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L1043">		toTest = suiteChainee.build(&quot;symDifference&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L1046">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L1047">		exceptedResult.add(val1);</span>
+<span class="nc" id="L1048">		exceptedResult.add(val2);</span>
+<span class="nc" id="L1049">		exceptedResult.add(symDifferenceVal1Val2);</span>
+
+<span class="nc" id="L1051">		assertTrue(&quot;Resultat de la difference symetrique doit etre [[7,8], [5,8,8], [7,5]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L1053">	}</span>
+	
+	/***
+	 *  symDifference operation test case
+	 *  val1 est un ensemble non-vide avec doublons
+	 *  val2 ensemble non-vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void symDifferenceOpTest8() throws IOException {
+
+		//initiate values
+<span class="nc" id="L1065">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(7,8,8));</span>
+<span class="nc" id="L1066">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,9,10,8));</span>
+<span class="nc" id="L1067">		ArrayList&lt;Object&gt; symDifferenceVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(7,5,9,10));</span>
+
+		//given values for test proposal
+<span class="nc" id="L1070">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1071">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L1072">		toTest = suiteChainee.build(&quot;symDifference&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L1075">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L1076">		exceptedResult.add(val1);</span>
+<span class="nc" id="L1077">		exceptedResult.add(val2);</span>
+<span class="nc" id="L1078">		exceptedResult.add(symDifferenceVal1Val2);</span>
+
+<span class="nc" id="L1080">		assertTrue(&quot;Resultat de la difference symetrique doit etre [[7,8,8], [5,9,10,8], [7,5,9,10]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L1082">	}</span>
+	
+	/***
+	 *  symDifference operation test case
+	 *  val1 est un ensemble non-vide avec doublons
+	 *  val2 ensemble non-vide avec doublons
+	 * @throws IOException 
+	 */
+	@Test
+	public void symDifferenceOpTest9() throws IOException {
+
+		//initiate values
+<span class="nc" id="L1094">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(7,8,8,10,4));</span>
+<span class="nc" id="L1095">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,9,10,4,8,4));</span>
+<span class="nc" id="L1096">		ArrayList&lt;Object&gt; symDifferenceVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(7,5,9));</span>
+
+		//given values for test proposal
+<span class="nc" id="L1099">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1100">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L1101">		toTest = suiteChainee.build(&quot;symDifference&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L1104">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L1105">		exceptedResult.add(val1);</span>
+<span class="nc" id="L1106">		exceptedResult.add(val2);</span>
+<span class="nc" id="L1107">		exceptedResult.add(symDifferenceVal1Val2);</span>
+
+<span class="nc" id="L1109">		assertTrue(&quot;Resultat de la difference symetrique doit etre [[7,8,8,10,4], [5,9,10,4,8,4], [7,5,9]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L1111">	}</span>
+	
+	/***
+	 *  isSubset operation test case
+	 *  val1 est un ensemble vide 
+	 *  val2 ensemble vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void isSubsetOpTest1() throws IOException {
+
+		//initiate values
+<span class="nc" id="L1123">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L1124">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L1125">		ArrayList&lt;Object&gt; isSubsetVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(&quot;true&quot;));</span>
+
+		//given values for test proposal
+<span class="nc" id="L1128">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1129">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L1130">		toTest = suiteChainee.build(&quot;isSubset&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L1133">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L1134">		exceptedResult.add(val1);</span>
+<span class="nc" id="L1135">		exceptedResult.add(val2);</span>
+<span class="nc" id="L1136">		exceptedResult.add(isSubsetVal1Val2);</span>
+
+<span class="nc" id="L1138">		assertTrue(&quot;Resultat de is subset doit etre [[], [], [true]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L1140">	}</span>
+	
+	/***
+	 *  isSubset operation test case
+	 *  val1 est un ensemble non-vide 
+	 *  val2 ensemble vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void isSubsetOpTest2() throws IOException {
+
+		//initiate values
+<span class="nc" id="L1152">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(2,3));</span>
+<span class="nc" id="L1153">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L1154">		ArrayList&lt;Object&gt; isSubsetVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(&quot;false&quot;));</span>
+
+		//given values for test proposal
+<span class="nc" id="L1157">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1158">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L1159">		toTest = suiteChainee.build(&quot;isSubset&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L1162">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L1163">		exceptedResult.add(val1);</span>
+<span class="nc" id="L1164">		exceptedResult.add(val2);</span>
+<span class="nc" id="L1165">		exceptedResult.add(isSubsetVal1Val2);</span>
+
+<span class="nc" id="L1167">		assertTrue(&quot;Resultat de is subset doit etre [[2,3], [], [false]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L1169">	}</span>
+	
+	/***
+	 *  isSubset operation test case
+	 *  val1 est un ensemble vide 
+	 *  val2 ensemble non-vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void isSubsetOpTest3() throws IOException {
+
+		//initiate values
+<span class="nc" id="L1181">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L1182">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(3,4));</span>
+<span class="nc" id="L1183">		ArrayList&lt;Object&gt; isSubsetVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(&quot;true&quot;));</span>
+
+		//given values for test proposal
+<span class="nc" id="L1186">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1187">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L1188">		toTest = suiteChainee.build(&quot;isSubset&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L1191">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L1192">		exceptedResult.add(val1);</span>
+<span class="nc" id="L1193">		exceptedResult.add(val2);</span>
+<span class="nc" id="L1194">		exceptedResult.add(isSubsetVal1Val2);</span>
+
+<span class="nc" id="L1196">		assertTrue(&quot;Resultat de is subset doit etre [[], [3,4], [true]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L1198">	}</span>
+	
+	
+	/***
+	 *  isSubset operation test case
+	 *  val1 est un ensemble non-vide 
+	 *  val2 ensemble non-vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void isSubsetOpTest4() throws IOException {
+
+		//initiate values
+<span class="nc" id="L1211">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(5,6,0,9));</span>
+<span class="nc" id="L1212">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(0,3,4,9,11,5,6));</span>
+<span class="nc" id="L1213">		ArrayList&lt;Object&gt; isSubsetVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(&quot;true&quot;));</span>
+
+		//given values for test proposal
+<span class="nc" id="L1216">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1217">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L1218">		toTest = suiteChainee.build(&quot;isSubset&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L1221">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L1222">		exceptedResult.add(val1);</span>
+<span class="nc" id="L1223">		exceptedResult.add(val2);</span>
+<span class="nc" id="L1224">		exceptedResult.add(isSubsetVal1Val2);</span>
+
+<span class="nc" id="L1226">		assertTrue(&quot;Resultat de is subset doit etre [[5,6,0,9], [0,3,4,9,11,5,6], [true]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L1228">	}</span>
+	
+	/***
+	 *  isSubset operation test case
+	 *  val1 est un ensemble non-vide avec doublons
+	 *  val2 ensemble vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void isSubsetOpTest5() throws IOException {
+
+		//initiate values
+<span class="nc" id="L1240">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(5,6,6));</span>
+<span class="nc" id="L1241">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L1242">		ArrayList&lt;Object&gt; isSubsetVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(&quot;false&quot;));</span>
+
+		//given values for test proposal
+<span class="nc" id="L1245">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1246">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L1247">		toTest = suiteChainee.build(&quot;isSubset&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L1250">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L1251">		exceptedResult.add(val1);</span>
+<span class="nc" id="L1252">		exceptedResult.add(val2);</span>
+<span class="nc" id="L1253">		exceptedResult.add(isSubsetVal1Val2);</span>
+
+<span class="nc" id="L1255">		assertTrue(&quot;Resultat de is subset doit etre [[5,6,6], [], [false]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L1257">	}</span>
+	
+	/***
+	 *  isSubset operation test case
+	 *  val1 est un ensemble vide 
+	 *  val2 ensemble non-vide avec doublons
+	 * @throws IOException 
+	 */
+	@Test
+	public void isSubsetOpTest6() throws IOException {
+
+		//initiate values
+<span class="nc" id="L1269">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L1270">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,8,8));</span>
+<span class="nc" id="L1271">		ArrayList&lt;Object&gt; isSubsetVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(&quot;true&quot;));</span>
+
+		//given values for test proposal
+<span class="nc" id="L1274">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1275">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L1276">		toTest = suiteChainee.build(&quot;isSubset&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L1279">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L1280">		exceptedResult.add(val1);</span>
+<span class="nc" id="L1281">		exceptedResult.add(val2);</span>
+<span class="nc" id="L1282">		exceptedResult.add(isSubsetVal1Val2);</span>
+
+<span class="nc" id="L1284">		assertTrue(&quot;Resultat de is subset doit etre [[], [5,8,8], [true]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L1286">	}</span>
+
+
+	/***
+	 *  isSubset operation test case
+	 *  val1 est un ensemble non-vide 
+	 *  val2 ensemble non-vide avec doublons
+	 * @throws IOException 
+	 */
+	@Test
+	public void isSubsetOpTest7() throws IOException {
+
+		//initiate values
+<span class="nc" id="L1299">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(7,8));</span>
+<span class="nc" id="L1300">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(7,5,8,8));</span>
+<span class="nc" id="L1301">		ArrayList&lt;Object&gt; isSubsetVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(&quot;true&quot;));</span>
+
+		//given values for test proposal
+<span class="nc" id="L1304">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1305">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L1306">		toTest = suiteChainee.build(&quot;isSubset&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L1309">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L1310">		exceptedResult.add(val1);</span>
+<span class="nc" id="L1311">		exceptedResult.add(val2);</span>
+<span class="nc" id="L1312">		exceptedResult.add(isSubsetVal1Val2);</span>
+
+<span class="nc" id="L1314">		assertTrue(&quot;Resultat de is subset doit etre [[7,8], [7,5,8,8], [true]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L1316">	}</span>
+	
+	/***
+	 *  isSubset operation test case
+	 *  val1 est un ensemble non-vide avec doublons
+	 *  val2 ensemble non-vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void isSubsetOpTest8() throws IOException {
+
+		//initiate values
+<span class="nc" id="L1328">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(7,8,8));</span>
+<span class="nc" id="L1329">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,9,10,8,7));</span>
+<span class="nc" id="L1330">		ArrayList&lt;Object&gt; isSubsetVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(&quot;true&quot;));</span>
+
+		//given values for test proposal
+<span class="nc" id="L1333">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1334">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L1335">		toTest = suiteChainee.build(&quot;isSubset&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L1338">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L1339">		exceptedResult.add(val1);</span>
+<span class="nc" id="L1340">		exceptedResult.add(val2);</span>
+<span class="nc" id="L1341">		exceptedResult.add(isSubsetVal1Val2);</span>
+
+<span class="nc" id="L1343">		assertTrue(&quot;Resultat de is subset doit etre [[7,8,8], [5,9,10,8,7], [true]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L1345">	}</span>
+	
+	/***
+	 *  isSubset operation test case
+	 *  val1 est un ensemble non-vide avec doublons
+	 *  val2 ensemble non-vide avec doublons
+	 * @throws IOException 
+	 */
+	@Test
+	public void isSubsetOpTest9() throws IOException {
+
+		//initiate values
+<span class="nc" id="L1357">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(7,8,8,10,4));</span>
+<span class="nc" id="L1358">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,9,10,4,8,4,7));</span>
+<span class="nc" id="L1359">		ArrayList&lt;Object&gt; isSubsetVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(&quot;true&quot;));</span>
+
+		//given values for test proposal
+<span class="nc" id="L1362">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1363">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L1364">		toTest = suiteChainee.build(&quot;isSubset&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L1367">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L1368">		exceptedResult.add(val1);</span>
+<span class="nc" id="L1369">		exceptedResult.add(val2);</span>
+<span class="nc" id="L1370">		exceptedResult.add(isSubsetVal1Val2);</span>
+
+<span class="nc" id="L1372">		assertTrue(&quot;Resultat de is subset doit etre [[7,8,8,10,4], [5,9,10,4,8,4,7], [true]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L1374">	}</span>
+	
+	/***
+	 *  isSuperset operation test case
+	 *  val1 est un ensemble vide 
+	 *  val2 ensemble vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void isSupersetOpTest1() throws IOException {
+
+		//initiate values
+<span class="nc" id="L1386">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L1387">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L1388">		ArrayList&lt;Object&gt; isSupersetVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(&quot;true&quot;));</span>
+
+		//given values for test proposal
+<span class="nc" id="L1391">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1392">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L1393">		toTest = suiteChainee.build(&quot;isSuperset&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L1396">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L1397">		exceptedResult.add(val1);</span>
+<span class="nc" id="L1398">		exceptedResult.add(val2);</span>
+<span class="nc" id="L1399">		exceptedResult.add(isSupersetVal1Val2);</span>
+
+<span class="nc" id="L1401">		assertTrue(&quot;Resultat de is superset doit etre [[], [], [true]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L1403">	}</span>
+	
+	/***
+	 *  isSuperset operation test case
+	 *  val1 est un ensemble non-vide 
+	 *  val2 ensemble vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void isSupersetOpTest2() throws IOException {
+
+		//initiate values
+<span class="nc" id="L1415">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(2,3));</span>
+<span class="nc" id="L1416">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L1417">		ArrayList&lt;Object&gt; isSupersetVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(&quot;true&quot;));</span>
+
+		//given values for test proposal
+<span class="nc" id="L1420">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1421">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L1422">		toTest = suiteChainee.build(&quot;isSuperset&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L1425">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L1426">		exceptedResult.add(val1);</span>
+<span class="nc" id="L1427">		exceptedResult.add(val2);</span>
+<span class="nc" id="L1428">		exceptedResult.add(isSupersetVal1Val2);</span>
+
+<span class="nc" id="L1430">		assertTrue(&quot;Resultat de is superset doit etre [[2,3], [], [true]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L1432">	}</span>
+	
+	/***
+	 *  isSuperset operation test case
+	 *  val1 est un ensemble vide 
+	 *  val2 ensemble non-vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void isSupersetOpTest3() throws IOException {
+
+		//initiate values
+<span class="nc" id="L1444">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L1445">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(3,4));</span>
+<span class="nc" id="L1446">		ArrayList&lt;Object&gt; isSupersetVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(&quot;false&quot;));</span>
+
+		//given values for test proposal
+<span class="nc" id="L1449">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1450">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L1451">		toTest = suiteChainee.build(&quot;isSuperset&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L1454">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L1455">		exceptedResult.add(val1);</span>
+<span class="nc" id="L1456">		exceptedResult.add(val2);</span>
+<span class="nc" id="L1457">		exceptedResult.add(isSupersetVal1Val2);</span>
+
+<span class="nc" id="L1459">		assertTrue(&quot;Resultat de is superset doit etre [[], [3,4], [false]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L1461">	}</span>
+	
+	
+	/***
+	 *  isSuperset operation test case
+	 *  val1 est un ensemble non-vide 
+	 *  val2 ensemble non-vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void isSupersetOpTest4() throws IOException {
+
+		//initiate values
+<span class="nc" id="L1474">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(5,6,0,9));</span>
+<span class="nc" id="L1475">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(0,9,6));</span>
+<span class="nc" id="L1476">		ArrayList&lt;Object&gt; isSupersetVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(&quot;true&quot;));</span>
+
+		//given values for test proposal
+<span class="nc" id="L1479">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1480">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L1481">		toTest = suiteChainee.build(&quot;isSuperset&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L1484">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L1485">		exceptedResult.add(val1);</span>
+<span class="nc" id="L1486">		exceptedResult.add(val2);</span>
+<span class="nc" id="L1487">		exceptedResult.add(isSupersetVal1Val2);</span>
+
+<span class="nc" id="L1489">		assertTrue(&quot;Resultat de is superset doit etre [[5,6,0,9], [0,9,6], [true]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L1491">	}</span>
+	
+	/***
+	 *  isSuperset operation test case
+	 *  val1 est un ensemble non-vide avec doublons
+	 *  val2 ensemble vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void isSupersetOpTest5() throws IOException {
+
+		//initiate values
+<span class="nc" id="L1503">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(5,6,6));</span>
+<span class="nc" id="L1504">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L1505">		ArrayList&lt;Object&gt; isSupersetVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(&quot;true&quot;));</span>
+
+		//given values for test proposal
+<span class="nc" id="L1508">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1509">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L1510">		toTest = suiteChainee.build(&quot;isSuperset&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L1513">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L1514">		exceptedResult.add(val1);</span>
+<span class="nc" id="L1515">		exceptedResult.add(val2);</span>
+<span class="nc" id="L1516">		exceptedResult.add(isSupersetVal1Val2);</span>
+
+<span class="nc" id="L1518">		assertTrue(&quot;Resultat de is superset doit etre [[5,6,6], [], [true]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L1520">	}</span>
+	
+	/***
+	 *  isSuperset operation test case
+	 *  val1 est un ensemble vide 
+	 *  val2 ensemble non-vide avec doublons
+	 * @throws IOException 
+	 */
+	@Test
+	public void isSupersetOpTest6() throws IOException {
+
+		//initiate values
+<span class="nc" id="L1532">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList());</span>
+<span class="nc" id="L1533">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,8,8));</span>
+<span class="nc" id="L1534">		ArrayList&lt;Object&gt; isSupersetVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(&quot;false&quot;));</span>
+
+		//given values for test proposal
+<span class="nc" id="L1537">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1538">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L1539">		toTest = suiteChainee.build(&quot;isSuperset&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L1542">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L1543">		exceptedResult.add(val1);</span>
+<span class="nc" id="L1544">		exceptedResult.add(val2);</span>
+<span class="nc" id="L1545">		exceptedResult.add(isSupersetVal1Val2);</span>
+
+<span class="nc" id="L1547">		assertTrue(&quot;Resultat de is superset doit etre [[], [5,8,8], [false]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L1549">	}</span>
+
+
+	/***
+	 *  isSuperset operation test case
+	 *  val1 est un ensemble non-vide 
+	 *  val2 ensemble non-vide avec doublons
+	 * @throws IOException 
+	 */
+	@Test
+	public void isSupersetOpTest7() throws IOException {
+
+		//initiate values
+<span class="nc" id="L1562">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(7,8,10,13,12,5));</span>
+<span class="nc" id="L1563">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(7,5,8,8));</span>
+<span class="nc" id="L1564">		ArrayList&lt;Object&gt; isSupersetVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(&quot;true&quot;));</span>
+
+		//given values for test proposal
+<span class="nc" id="L1567">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1568">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L1569">		toTest = suiteChainee.build(&quot;isSuperset&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L1572">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L1573">		exceptedResult.add(val1);</span>
+<span class="nc" id="L1574">		exceptedResult.add(val2);</span>
+<span class="nc" id="L1575">		exceptedResult.add(isSupersetVal1Val2);</span>
+
+<span class="nc" id="L1577">		assertTrue(&quot;Resultat de is superset doit etre [[7,8,10,13,12,5], [7,5,8,8], [true]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L1579">	}</span>
+	
+	/***
+	 *  isSuperset operation test case
+	 *  val1 est un ensemble non-vide avec doublons
+	 *  val2 ensemble non-vide
+	 * @throws IOException 
+	 */
+	@Test
+	public void isSupersetOpTest8() throws IOException {
+
+		//initiate values
+<span class="nc" id="L1591">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(7,8,8,10,9,5,11));</span>
+<span class="nc" id="L1592">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,9,10,8,7));</span>
+<span class="nc" id="L1593">		ArrayList&lt;Object&gt; isSupersetVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(&quot;true&quot;));</span>
+
+		//given values for test proposal
+<span class="nc" id="L1596">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1597">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L1598">		toTest = suiteChainee.build(&quot;isSuperset&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L1601">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L1602">		exceptedResult.add(val1);</span>
+<span class="nc" id="L1603">		exceptedResult.add(val2);</span>
+<span class="nc" id="L1604">		exceptedResult.add(isSupersetVal1Val2);</span>
+
+<span class="nc" id="L1606">		assertTrue(&quot;Resultat de is superset doit etre [[7,8,8,10,9,5,11], [5,9,10,8,7], [true]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L1608">	}</span>
+	
+	/***
+	 *  isSuperset operation test case
+	 *  val1 est un ensemble non-vide avec doublons
+	 *  val2 ensemble non-vide avec doublons
+	 * @throws IOException 
+	 */
+	@Test
+	public void isSupersetOpTest9() throws IOException {
+
+		//initiate values
+<span class="nc" id="L1620">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(7,8,8,10,4));</span>
+<span class="nc" id="L1621">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(5,9,10,4,8,4,7));</span>
+<span class="nc" id="L1622">		ArrayList&lt;Object&gt; isSupersetVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(&quot;false&quot;));</span>
+
+		//given values for test proposal
+<span class="nc" id="L1625">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1626">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="nc" id="L1627">		toTest = suiteChainee.build(&quot;isSuperset&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="nc" id="L1630">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="nc" id="L1631">		exceptedResult.add(val1);</span>
+<span class="nc" id="L1632">		exceptedResult.add(val2);</span>
+<span class="nc" id="L1633">		exceptedResult.add(isSupersetVal1Val2);</span>
+
+<span class="nc" id="L1635">		assertTrue(&quot;Resultat de is superset doit etre [[7,8,8,10,4], [5,9,10,4,8,4,7], [false]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="nc" id="L1637">	}</span>
+	/**
+	 * test de l ajout d'un ensemble a une liste
+	 */
+	@Test
+	public void  addTest(){
+		//add new list 
+<span class="nc" id="L1644">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1645">		toTest.add(ensembleTest);</span>
+<span class="nc" id="L1646">		assertEquals(&quot;Apres un ajout ,la taille de liste  doit etre 1 &quot;,1,toTest.getSize());</span>
+
+<span class="nc" id="L1648">	}</span>
+	/**
+	 * enlever un element situe a une positon  existante dans la liste
+	 */
+
+	@Test 
+	public void  removeAtValidPositionTest(){
+		//create list and add some fake data
+<span class="nc" id="L1656">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1657">		toTest.add(ensembleTest);</span>
+<span class="nc" id="L1658">		toTest.add(ensembleTest);</span>
+
+		//remove second item
+<span class="nc" id="L1661">		toTest.removeAt(1);</span>
+<span class="nc" id="L1662">		assertEquals(&quot;Apres un retrait dans une liste de taille 2 ,la taille de liste  doit etre 1 &quot;,1,toTest.getSize());</span>
+
+
+<span class="nc" id="L1665">	}</span>
+	/***
+	 * enlever un element situer a une position invalide(soit -1 ou superieur a la taille de la file)
+	 * The test case must throw an exception
+	 */
+	@Test(expected=ArrayIndexOutOfBoundsException.class)
+	public void  removeAtInvalidPositionTest(){
+		//create list and add some fake data
+<span class="nc" id="L1673">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1674">		toTest.add(ensembleTest);</span>
+<span class="nc" id="L1675">		toTest.add(ensembleTest);</span>
+
+		//remove item  at invalid position (e.g 10) 
+<span class="nc" id="L1678">		toTest.removeAt(10);</span>
+<span class="nc" id="L1679">	}</span>
+	/***
+	 * enlever un item qui existe dans une liste 
+	 */
+	@Test
+	public void removeExistingItemTest(){
+		//create list and add some fake data
+<span class="nc" id="L1686">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1687">		toTest.add(ensembleTest);</span>
+<span class="nc" id="L1688">		toTest.add(ensembleTest1);</span>
+
+		//enleve le premier ensemble de la liste
+<span class="nc" id="L1691">		toTest.removeItem(ensembleTest);</span>
+<span class="nc" id="L1692">		assertEquals(&quot;Apres un retrait dans une liste de taille 2 ,la taille de liste  doit etre 1 &quot;,1,toTest.getSize());</span>
+
+
+<span class="nc" id="L1695">	}</span>
+	/***
+	 * enlever un item qui n'existe pas dans une liste
+	 * The function must throw a null pointer exception
+	 */
+	@Test(expected=NullPointerException.class)
+	public void removeNonExistingItemTest(){
+		//create list and add some fake data
+<span class="nc" id="L1703">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1704">		toTest.add(ensembleTest);</span>
+<span class="nc" id="L1705">		toTest.add(ensembleTest1);</span>
+<span class="nc" id="L1706">		ArrayList&lt;Object&gt; fakeEnsemble = new ArrayList&lt;Object&gt;(Arrays.asList(12,67));</span>
+
+		//enleve le premier ensemble de la liste
+<span class="nc" id="L1709">		toTest.removeItem(fakeEnsemble);</span>
+
+<span class="nc" id="L1711">	}</span>
+	/***
+	 * enlever un element situer a une position valide dans la liste
+	 */
+	@Test
+	public void setAtValidPositionTest(){
+<span class="nc" id="L1717">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1718">		toTest.add(ensembleTest);</span>
+<span class="nc" id="L1719">		toTest.add(ensembleTest1);</span>
+
+<span class="nc" id="L1721">		ArrayList&lt;Object&gt; newEnsemble = new ArrayList&lt;Object&gt;(Arrays.asList(12,67));</span>
+		//set ensemble at position 2 
+<span class="nc" id="L1723">		toTest.setAt(newEnsemble, 1);</span>
+<span class="nc" id="L1724">		assertTrue(&quot;Apres modification, lensembles ajouter et celui dans la liste doivent etre les memesm&quot;</span>
+<span class="nc" id="L1725">				+ &quot; &quot;,toTest.getAt(1).equals(newEnsemble));</span>
+
+<span class="nc" id="L1727">	}</span>
+
+	/***
+	 * enlever un element situer a une position invalide dans la liste
+	 */
+	@Test(expected=ArrayIndexOutOfBoundsException.class)
+	public void setAtInvalidPositionTest() {
+<span class="nc" id="L1734">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1735">		toTest.add(ensembleTest);</span>
+<span class="nc" id="L1736">		toTest.add(ensembleTest1);</span>
+
+<span class="nc" id="L1738">		ArrayList&lt;Object&gt; newEnsemble = new ArrayList&lt;Object&gt;(Arrays.asList(12,67));</span>
+		//set ensemble at inexesting position 90 par e.g
+<span class="nc" id="L1740">		toTest.setAt(newEnsemble, 90);</span>
+<span class="nc" id="L1741">	}</span>
+
+	/***
+	 * recuperer un element situer a une position valide dans la liste
+	 */
+	@Test
+	public void getAtValidPositionTest(){
+<span class="nc" id="L1748">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1749">		toTest.add(ensembleTest);</span>
+<span class="nc" id="L1750">		toTest.add(ensembleTest1);</span>
+	    
+<span class="nc" id="L1752">		ArrayList&lt;Object&gt; givenArray = toTest.getAt(1);</span>
+<span class="nc" id="L1753">		assertTrue(&quot;l&lt;ojbet a la position doit etre l'ensemble 1 &quot;,givenArray.equals(ensembleTest1));</span>
+		
+<span class="nc" id="L1755">	}</span>
+
+	/***
+	 * recuperer un element situer a une position invalide dans la liste
+	 */
+	@Test(expected=ArrayIndexOutOfBoundsException.class)
+	public void getAtInvalidPositionTest() {
+<span class="nc" id="L1762">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1763">		toTest.add(ensembleTest);</span>
+<span class="nc" id="L1764">		toTest.add(ensembleTest1);</span>
+	    //try to get item at invalid position 900 par exemple
+<span class="nc" id="L1766">		toTest.getAt(90);</span>
+<span class="nc" id="L1767">	}</span>
+
+	/***
+	 * tester la recuperation de  la taille d'une liste remplie
+	 */
+	@Test
+	public void  getSizeTest(){
+<span class="nc" id="L1774">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1775">		toTest.add(ensembleTest);</span>
+<span class="nc" id="L1776">		toTest.add(ensembleTest1);</span>
+
+		//la taille doit etre 2 
+<span class="nc" id="L1779">		assertEquals(&quot;la taille de la liste doit etre 2 &quot;,2,toTest.getSize());</span>
+<span class="nc" id="L1780">	}</span>
+
+	/***
+	 * tester la recuperation de  la taille d'une liste qui est vide
+	 */
+	@Test
+	public void  getEmptyListSizeTest(){
+<span class="nc" id="L1787">		MyList toTest = new MyListImpl();	</span>
+
+		//la taille doit etre 2 
+<span class="nc" id="L1790">		assertEquals(&quot;la taille de la liste doit etre 0 &quot;,0,toTest.getSize());</span>
+<span class="nc" id="L1791">	}</span>
+
+	/**
+	 * test de la restauration d'une liste a son etat initial
+	 * The list must be empty after reset(size =0 ) 
+	 */
+	@Test
+	public void  resetTest(){
+<span class="nc" id="L1799">		MyList toTest = new MyListImpl();	</span>
+<span class="nc" id="L1800">		toTest.add(ensembleTest);</span>
+<span class="nc" id="L1801">		toTest.add(ensembleTest1);</span>
+
+		//la taille doit etre -1 apres le clear
+<span class="nc" id="L1804">		toTest.reset();</span>
+<span class="nc" id="L1805">		assertEquals(&quot;la liste doi etre nulle (de taille 0)&quot;,0,toTest.getSize());</span>
+<span class="nc" id="L1806">	}</span>
+
+	/***
+	 * check whenever 2 myList object  content are the same 
+	 */
+	public boolean isMyListAreEquals(MyList first,MyList second){
+
+		//The given lists must have the same size
+<span class="nc bnc" id="L1814" title="All 2 branches missed.">		if(first.getSize() == second.getSize()){</span>
+<span class="nc bnc" id="L1815" title="All 2 branches missed.">			for (int i = 0; i &lt; first.getSize(); i++) {</span>
+<span class="nc bnc" id="L1816" title="All 2 branches missed.">				if(!first.getAt(i).equals(second.getAt(i)))</span>
+<span class="nc" id="L1817">					return false;</span>
+			}
+<span class="nc" id="L1819">		}else</span>
+<span class="nc" id="L1820">			return false;</span>
+
+<span class="nc" id="L1822">		return true ;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>EC (2016-10-17 10:45:20)</div></body></html>

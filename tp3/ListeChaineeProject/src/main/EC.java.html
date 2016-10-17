@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>EC.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">EC (2016-10-17 10:45:20)</a> &gt; <a href="../../index.html" class="el_group">ListeChaineeProject</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">main</a> &gt; <span class="el_source">EC.java</span></div><h1>EC.java</h1><pre class="source lang-java linenums">package main;
+
+import static org.junit.Assert.*;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import junit.framework.Assert;
+import liste_tp3.ListeChaineeImpl;
+import liste_tp3.MyListImpl;
+
+/**
+ * la fonction test la liste chainee via EC 
+ * @author thierno and Tomas 
+ *
+ */
+<span class="fc" id="L24">public class EC {</span>
+	
+<span class="fc" id="L26">	ArrayList&lt;Object&gt; ensembleTest = new ArrayList&lt;Object&gt;(Arrays.asList(4,1));</span>
+<span class="fc" id="L27">	ArrayList&lt;Object&gt; ensembleTest1 = new ArrayList&lt;Object&gt;(Arrays.asList(12,67));</span>
+
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+
+<span class="fc" id="L32">	}</span>
+
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+<span class="fc" id="L36">	}</span>
+
+	@Before
+	public void setUp() throws Exception {
+<span class="fc" id="L40">	}</span>
+
+	@After
+	public void tearDown() throws Exception {
+<span class="fc" id="L44">	}</span>
+
+	/***
+	 * 2 listes normales
+	 *  union operation test case
+	 * @throws IOException 
+	 */
+	@Test
+	public void unionOpTest() throws IOException {
+
+		//initiate values
+<span class="fc" id="L55">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(4,1));</span>
+<span class="fc" id="L56">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(2,3));</span>
+<span class="fc" id="L57">		ArrayList&lt;Object&gt; unionVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(4,1,2,3));</span>
+
+		//given values for test proposal
+<span class="fc" id="L60">		MyList toTest = new MyListImpl();	</span>
+<span class="fc" id="L61">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="fc" id="L62">		toTest = suiteChainee.build(&quot;union&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="fc" id="L65">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="fc" id="L66">		exceptedResult.add(val1);</span>
+<span class="fc" id="L67">		exceptedResult.add(val2);</span>
+<span class="fc" id="L68">		exceptedResult.add(unionVal1Val2);</span>
+
+<span class="fc" id="L70">		assertTrue(&quot;Resultat de l'union doit etre [[4,1], [2,3], [4,1,2,3]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="fc" id="L72">	}</span>
+	
+	/***
+	 *  The fuction take 2 normal lists 
+	 *   intersection operation test case
+	 * @throws IOException 
+	 */
+	@Test
+	public void intersectionOpTest() throws IOException {
+		//initiate values
+<span class="fc" id="L82">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(4,7,8,1));</span>
+<span class="fc" id="L83">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(2,3,8,4,7));</span>
+<span class="fc" id="L84">		ArrayList&lt;Object&gt; intersectVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(4,7,8));</span>
+
+		//given values for test proposal
+<span class="fc" id="L87">		MyList toTest = new MyListImpl();	</span>
+<span class="fc" id="L88">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="fc" id="L89">		toTest = suiteChainee.build(&quot;intersection&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="fc" id="L92">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="fc" id="L93">		exceptedResult.add(val1);</span>
+<span class="fc" id="L94">		exceptedResult.add(val2);</span>
+<span class="fc" id="L95">		exceptedResult.add(intersectVal1Val2);</span>
+
+<span class="fc" id="L97">		assertTrue(&quot;Resultat de l'intersection doit etre [[4,7,8,1], [2,3,8,4,7], [8,4,7]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+<span class="fc" id="L98">	}</span>
+	/**
+	 * val1: Doublon 
+	 * val2:ensemble non vide
+	 * difference  operation  test case
+	 * @throws IOException 
+	 */
+	@Test
+	public void differenceOpTest() throws IOException {
+		//initiate values
+<span class="fc" id="L108">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(4,7,8,1,1));</span>
+<span class="fc" id="L109">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(2,3,8,4,7));</span>
+<span class="fc" id="L110">		ArrayList&lt;Object&gt; differenceVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(1,1));</span>
+
+		//given values for test proposal
+<span class="fc" id="L113">		MyList toTest = new MyListImpl();	</span>
+<span class="fc" id="L114">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="fc" id="L115">		toTest = suiteChainee.build(&quot;difference&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="fc" id="L118">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="fc" id="L119">		exceptedResult.add(val1);</span>
+<span class="fc" id="L120">		exceptedResult.add(val2);</span>
+<span class="fc" id="L121">		exceptedResult.add(differenceVal1Val2);</span>
+
+<span class="fc" id="L123">		assertTrue(&quot;Resultat de la difference doit etre [[4,7,8,1], [2,3,8,4,7], [1]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="fc" id="L125">	}</span>
+	/***
+	 * test case : 
+	 * val1 est un ensemble vide 
+	 * val2 ensemble non-vide
+	 * symetric difference operation test case
+	 * @throws IOException 
+	 */
+	@Test
+	public void symDifferenceOpTest() throws IOException{
+		//initiate values
+<span class="fc" id="L136">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;();</span>
+<span class="fc" id="L137">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(2,3,8,4,7));</span>
+<span class="fc" id="L138">		ArrayList&lt;Object&gt; symetricDiffVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(2,3,8,4,7));</span>
+
+		//given values for test proposal
+<span class="fc" id="L141">		MyList toTest = new MyListImpl();	</span>
+<span class="fc" id="L142">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="fc" id="L143">		toTest = suiteChainee.build(&quot;symDifference&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="fc" id="L146">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="fc" id="L147">		exceptedResult.add(val1);</span>
+<span class="fc" id="L148">		exceptedResult.add(val2);</span>
+<span class="fc" id="L149">		exceptedResult.add(symetricDiffVal1Val2);</span>
+
+<span class="fc" id="L151">		assertTrue(&quot;Resultat de la symmetric difference doit etre [[4,7,8,1], [2,3,8,4,7], [1,2,3]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+<span class="fc" id="L152">	}</span>
+	/***
+	 * 2 listes normales
+	 * is subset operation test case
+	 * @throws IOException 
+	 */
+	@Test
+	public void isSubserOpTest() throws IOException{
+		//initiate values
+<span class="fc" id="L161">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(1,3,5));</span>
+<span class="fc" id="L162">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(1,9,4,8,3,11,5));</span>
+<span class="fc" id="L163">		ArrayList&lt;Object&gt; subSetVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(&quot;true&quot;));</span>
+
+		//given values for test proposal
+<span class="fc" id="L166">		MyList toTest = new MyListImpl();	</span>
+<span class="fc" id="L167">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="fc" id="L168">		toTest = suiteChainee.build(&quot;isSubset&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="fc" id="L171">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="fc" id="L172">		exceptedResult.add(val1);</span>
+<span class="fc" id="L173">		exceptedResult.add(val2);</span>
+<span class="fc" id="L174">		exceptedResult.add(subSetVal1Val2);</span>
+
+<span class="fc" id="L176">		assertTrue(&quot;Resultat de is subset doit etre [[1,3,5], [1,9,4,8,3,11,5], [true]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+<span class="fc" id="L178">	}</span>
+	/***
+	 * 2 listes normales
+	 * is superset operation test case 
+	 * @throws IOException 
+	 */
+	@Test
+	public void isSupersetOpTest() throws IOException{
+		//initiate values
+<span class="fc" id="L187">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(1,3,5));</span>
+<span class="fc" id="L188">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(1,9,4,8,3,11,5));</span>
+<span class="fc" id="L189">		ArrayList&lt;Object&gt; superSetVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(&quot;false&quot;));</span>
+
+		//given values for test proposal
+<span class="fc" id="L192">		MyList toTest = new MyListImpl();	</span>
+<span class="fc" id="L193">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="fc" id="L194">		toTest = suiteChainee.build(&quot;isSuperset&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="fc" id="L197">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="fc" id="L198">		exceptedResult.add(val1);</span>
+<span class="fc" id="L199">		exceptedResult.add(val2);</span>
+<span class="fc" id="L200">		exceptedResult.add(superSetVal1Val2);</span>
+
+<span class="fc" id="L202">		assertTrue(&quot;Resultat de is subset doit etre [[1,3,5], [1,9,4,8,3,11,5], [false]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+
+
+<span class="fc" id="L205">	}</span>
+	/**
+	 * 2 listes non vides
+	 * invalid operation test case 
+	 */
+	@Test
+	public void invalidOpTest() throws IOException{
+<span class="fc" id="L212">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(1,2));</span>
+<span class="fc" id="L213">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(1,3));</span>
+		//given values for test proposal
+<span class="fc" id="L215">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="fc" id="L216">		MyList toTest = suiteChainee.build(&quot;invalid&quot;, val1, val2);</span>
+<span class="nc" id="L217">		fail(&quot;Specied Operation not supported&quot;);</span>
+<span class="nc" id="L218">	}</span>
+	
+	/**
+	 * test de l ajout d'un ensemble a une liste
+	 */
+	@Test
+	public void  addTest(){
+		//add new list 
+<span class="fc" id="L226">		MyList toTest = new MyListImpl();	</span>
+<span class="fc" id="L227">		toTest.add(ensembleTest);</span>
+<span class="fc" id="L228">		assertEquals(&quot;Apres un ajout ,la taille de liste  doit etre 1 &quot;,1,toTest.getSize());</span>
+
+<span class="fc" id="L230">	}</span>
+	/**
+	 * enlever un element situe a une positon  existante dans la liste
+	 */
+
+	@Test 
+	public void  removeAtValidPositionTest(){
+		//create list and add some fake data
+<span class="fc" id="L238">		MyList toTest = new MyListImpl();	</span>
+<span class="fc" id="L239">		toTest.add(ensembleTest);</span>
+<span class="fc" id="L240">		toTest.add(ensembleTest);</span>
+
+		//remove second item
+<span class="fc" id="L243">		toTest.removeAt(1);</span>
+<span class="fc" id="L244">		assertEquals(&quot;Apres un retrait dans une liste de taille 2 ,la taille de liste  doit etre 1 &quot;,1,toTest.getSize());</span>
+
+
+<span class="fc" id="L247">	}</span>
+	/***
+	 * enlever un element situer a une position invalide(soit -1 ou superieur a la taille de la file)
+	 * The test case must throw an exception
+	 */
+	@Test(expected=ArrayIndexOutOfBoundsException.class)
+	public void  removeAtInvalidPositionTest(){
+		//create list and add some fake data
+<span class="fc" id="L255">		MyList toTest = new MyListImpl();	</span>
+<span class="fc" id="L256">		toTest.add(ensembleTest);</span>
+<span class="fc" id="L257">		toTest.add(ensembleTest);</span>
+
+		//remove item  at invalid position (e.g 10) 
+<span class="nc" id="L260">		toTest.removeAt(10);</span>
+<span class="nc" id="L261">	}</span>
+	/***
+	 * enlever un item qui existe dans une liste 
+	 */
+	@Test
+	public void removeExistingItemTest(){
+		//create list and add some fake data
+<span class="fc" id="L268">		MyList toTest = new MyListImpl();	</span>
+<span class="fc" id="L269">		toTest.add(ensembleTest);</span>
+<span class="fc" id="L270">		toTest.add(ensembleTest1);</span>
+
+		//enleve le premier ensemble de la liste
+<span class="fc" id="L273">		toTest.removeItem(ensembleTest);</span>
+<span class="fc" id="L274">		assertEquals(&quot;Apres un retrait dans une liste de taille 2 ,la taille de liste  doit etre 1 &quot;,1,toTest.getSize());</span>
+
+
+<span class="fc" id="L277">	}</span>
+	/***
+	 * enlever un item qui n'existe pas dans une liste
+	 * The function must throw a null pointer exception
+	 */
+	@Test(expected=NullPointerException.class)
+	public void removeNonExistingItemTest(){
+		//create list and add some fake data
+<span class="fc" id="L285">		MyList toTest = new MyListImpl();	</span>
+<span class="fc" id="L286">		toTest.add(ensembleTest);</span>
+<span class="fc" id="L287">		toTest.add(ensembleTest1);</span>
+<span class="fc" id="L288">		ArrayList&lt;Object&gt; fakeEnsemble = new ArrayList&lt;Object&gt;(Arrays.asList(12,67));</span>
+
+		//enleve le premier ensemble de la liste
+<span class="nc" id="L291">		toTest.removeItem(fakeEnsemble);</span>
+
+<span class="nc" id="L293">	}</span>
+	/***
+	 * enlever un element situer a une position valide dans la liste
+	 */
+	@Test
+	public void setAtValidPositionTest(){
+<span class="fc" id="L299">		MyList toTest = new MyListImpl();	</span>
+<span class="fc" id="L300">		toTest.add(ensembleTest);</span>
+<span class="fc" id="L301">		toTest.add(ensembleTest1);</span>
+
+<span class="fc" id="L303">		ArrayList&lt;Object&gt; newEnsemble = new ArrayList&lt;Object&gt;(Arrays.asList(12,67));</span>
+		//set ensemble at position 2 
+<span class="fc" id="L305">		toTest.setAt(newEnsemble, 1);</span>
+<span class="fc" id="L306">		assertTrue(&quot;Apres modification, lensembles ajouter et celui dans la liste doivent etre les memesm&quot;</span>
+<span class="fc" id="L307">				+ &quot; &quot;,toTest.getAt(1).equals(newEnsemble));</span>
+
+<span class="fc" id="L309">	}</span>
+
+	/***
+	 * enlever un element situer a une position invalide dans la liste
+	 */
+	@Test(expected=ArrayIndexOutOfBoundsException.class)
+	public void setAtInvalidPositionTest() {
+<span class="fc" id="L316">		MyList toTest = new MyListImpl();	</span>
+<span class="fc" id="L317">		toTest.add(ensembleTest);</span>
+<span class="fc" id="L318">		toTest.add(ensembleTest1);</span>
+
+<span class="fc" id="L320">		ArrayList&lt;Object&gt; newEnsemble = new ArrayList&lt;Object&gt;(Arrays.asList(12,67));</span>
+		//set ensemble at inexesting position 90 par e.g
+<span class="nc" id="L322">		toTest.setAt(newEnsemble, 90);</span>
+<span class="nc" id="L323">	}</span>
+
+	/***
+	 * recuperer un element situer a une position valide dans la liste
+	 */
+	@Test
+	public void getAtValidPositionTest(){
+<span class="fc" id="L330">		MyList toTest = new MyListImpl();	</span>
+<span class="fc" id="L331">		toTest.add(ensembleTest);</span>
+<span class="fc" id="L332">		toTest.add(ensembleTest1);</span>
+	    
+<span class="fc" id="L334">		ArrayList&lt;Object&gt; givenArray = toTest.getAt(1);</span>
+<span class="fc" id="L335">		assertTrue(&quot;l&lt;ojbet a la position doit etre l'ensemble 1 &quot;,givenArray.equals(ensembleTest1));</span>
+		
+<span class="fc" id="L337">	}</span>
+
+	/***
+	 * recuperer un element situer a une position invalide dans la liste
+	 */
+	@Test(expected=ArrayIndexOutOfBoundsException.class)
+	public void getAtInvalidPositionTest() {
+<span class="fc" id="L344">		MyList toTest = new MyListImpl();	</span>
+<span class="fc" id="L345">		toTest.add(ensembleTest);</span>
+<span class="fc" id="L346">		toTest.add(ensembleTest1);</span>
+	    //try to get item at invalid position 900 par exemple
+<span class="nc" id="L348">		toTest.getAt(90);</span>
+<span class="nc" id="L349">	}</span>
+
+	/***
+	 * tester la recuperation de  la taille d'une liste remplie
+	 */
+	@Test
+	public void  getSizeTest(){
+<span class="fc" id="L356">		MyList toTest = new MyListImpl();	</span>
+<span class="fc" id="L357">		toTest.add(ensembleTest);</span>
+<span class="fc" id="L358">		toTest.add(ensembleTest1);</span>
+
+		//la taille doit etre 2 
+<span class="fc" id="L361">		assertEquals(&quot;la taille de la liste doit etre 2 &quot;,2,toTest.getSize());</span>
+<span class="fc" id="L362">	}</span>
+
+	/***
+	 * tester la recuperation de  la taille d'une liste qui est vide
+	 */
+	@Test
+	public void  getEmptyListSizeTest(){
+<span class="fc" id="L369">		MyList toTest = new MyListImpl();	</span>
+
+		//la taille doit etre 2 
+<span class="fc" id="L372">		assertEquals(&quot;la taille de la liste doit etre 0 &quot;,0,toTest.getSize());</span>
+<span class="fc" id="L373">	}</span>
+
+	/**
+	 * test de la restauration d'une liste a son etat initial
+	 * The list must be empty after reset(size =0 ) 
+	 */
+	@Test
+	public void  resetTest(){
+<span class="fc" id="L381">		MyList toTest = new MyListImpl();	</span>
+<span class="fc" id="L382">		toTest.add(ensembleTest);</span>
+<span class="fc" id="L383">		toTest.add(ensembleTest1);</span>
+
+		//la taille doit etre -1 apres le clear
+<span class="fc" id="L386">		toTest.reset();</span>
+<span class="fc" id="L387">		assertEquals(&quot;la liste doi etre nulle (de taille 0)&quot;,0,toTest.getSize());</span>
+<span class="fc" id="L388">	}</span>
+
+	/***
+	 * check whenever 2 myList object  content are the same 
+	 */
+	public boolean isMyListAreEquals(MyList first,MyList second){
+
+		//The given lists must have the same size
+<span class="pc bpc" id="L396" title="1 of 2 branches missed.">		if(first.getSize() == second.getSize()){</span>
+<span class="fc bfc" id="L397" title="All 2 branches covered.">			for (int i = 0; i &lt; first.getSize(); i++) {</span>
+<span class="pc bpc" id="L398" title="1 of 2 branches missed.">				if(!first.getAt(i).equals(second.getAt(i)))</span>
+<span class="nc" id="L399">					return false;</span>
+			}
+<span class="fc" id="L401">		}else</span>
+<span class="nc" id="L402">			return false;</span>
+
+<span class="fc" id="L404">		return true ;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>EC (2016-10-17 10:45:20)</div></body></html>

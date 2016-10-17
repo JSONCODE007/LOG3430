@@ -23,7 +23,7 @@ import liste_tp3.MyListImpl;
  * @author thierno and Tomas
  *
  */
-public class ListeChaineeImplTest_AC {
+public class AC {
 
 	ArrayList<Object> ensembleTest = new ArrayList<Object>(Arrays.asList(4,1));
 	ArrayList<Object> ensembleTest1 = new ArrayList<Object>(Arrays.asList(12,67)); 
