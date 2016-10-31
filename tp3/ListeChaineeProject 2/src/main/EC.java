@@ -438,7 +438,7 @@ public class EC {
 
 	/**
 	 * union test pour couvrir le removeAt
-	 * LA branche else de cette condition  if(!setA.contains(a)) est pas couverte
+	 * La branche de cette condition  if(pos == 0) n'est pas couverte
 	 * @throws IOException 
 	 */
 	@Test
@@ -450,12 +450,12 @@ public class EC {
 		//remove second item
 		toTest.removeAt(0);
 		System.out.println("size:"+toTest.getSize());
-		assertEquals("Apres un retrait dans une liste de taille 2 ,la taille de liste  doit etre 1 ",0,toTest.getSize());
+		assertEquals("Apres un retrait de l'element a la position 0 dans une liste de taille 2 ,la taille de liste  doit etre 1 ",0,toTest.getSize());
 	}
 	
 	/**
 	 * union test pour couvrir le removeAt
-	 * LA branche else de cette condition  if(!setA.contains(a)) est pas couverte
+	 * la branche à l’intérieur de la boucle while(pos-- > 1) n’est pas couverte
 	 * @throws IOException 
 	 */
 	@Test
@@ -475,7 +475,7 @@ public class EC {
 	
 	/**
 	 * remove un item dans une liste vide
-	 * LA branche else de cette condition  if(!setA.contains(a)) est pas couverte
+	 * une des branches de la condition if(start != null && start.getContent()==item) n'a pas été couverte
 	 * @throws IOException 
 	 */
 	@Test(expected=NullPointerException.class)
