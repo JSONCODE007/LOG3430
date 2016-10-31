@@ -1821,12 +1821,11 @@ public class AC {
 
 		return true ;
 	}
-	
+
 	
 	/*--------------------------------------------------------------------------------------------*/
 	//Ici on commence les test Boite Blanche
 	/*--------------------------------------------------------------------------------------------*/
-	
 	
 	/**
 	 * union test pour couvrir le setCalculatorImpl 
@@ -1857,7 +1856,7 @@ public class AC {
 
 	/**
 	 * union test pour couvrir le removeAt
-	 * LA branche else de cette condition  if(!setA.contains(a)) est pas couverte
+	 * La branche de cette condition  if(pos == 0) n'est pas couverte
 	 * @throws IOException 
 	 */
 	@Test
@@ -1869,12 +1868,12 @@ public class AC {
 		//remove second item
 		toTest.removeAt(0);
 		System.out.println("size:"+toTest.getSize());
-		assertEquals("Apres un retrait dans une liste de taille 2 ,la taille de liste  doit etre 1 ",0,toTest.getSize());
+		assertEquals("Apres un retrait de l'element a la position 0 dans une liste de taille 2 ,la taille de liste  doit etre 1 ",0,toTest.getSize());
 	}
 	
 	/**
 	 * union test pour couvrir le removeAt
-	 * LA branche else de cette condition  if(!setA.contains(a)) est pas couverte
+	 * la branche � l�int�rieur de la boucle while(pos-- > 1) n�est pas couverte
 	 * @throws IOException 
 	 */
 	@Test
@@ -1894,7 +1893,7 @@ public class AC {
 	
 	/**
 	 * remove un item dans une liste vide
-	 * LA branche else de cette condition  if(!setA.contains(a)) n'est pas couverte
+	 * une des branches de la condition if(start != null && start.getContent()==item) n'a pas �t� couverte
 	 * @throws IOException 
 	 */
 	@Test(expected=NullPointerException.class)
@@ -1927,8 +1926,8 @@ public class AC {
 		assertEquals("Apres un retrait dans une liste de taille 2 ,la taille de liste  doit etre 1 ",3,toTest.getSize());
 	}
 	/**
-	 * supprimer une liste avec une plus grande taille pour iterer le plus possible dans le while
-	 * LA branche else de cette condition  if(!setA.contains(a)) est pas couverte
+	 * tester une operation par defaut
+	 * 
 	 * @throws IOException 
 	 */
 	@Test
