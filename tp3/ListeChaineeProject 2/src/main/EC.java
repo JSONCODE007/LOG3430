@@ -405,7 +405,10 @@ public class EC {
 	}
 	
 	
+	/*--------------------------------------------------------------------------------------------*/
 	//Ici on commence les test Boite Blanche
+	/*--------------------------------------------------------------------------------------------*/
+	
 	/**
 	 * union test pour couvrir le setCalculatorImpl 
 	 * LA branche else de cette condition  if(!setA.contains(a)) est pas couverte

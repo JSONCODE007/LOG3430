@@ -1821,7 +1821,13 @@ public class AC {
 
 		return true ;
 	}
+	
+	
+	/*--------------------------------------------------------------------------------------------*/
 	//Ici on commence les test Boite Blanche
+	/*--------------------------------------------------------------------------------------------*/
+	
+	
 	/**
 	 * union test pour couvrir le setCalculatorImpl 
 	 * LA branche else de cette condition  if(!setA.contains(a)) est pas couverte
@@ -1888,7 +1894,7 @@ public class AC {
 	
 	/**
 	 * remove un item dans une liste vide
-	 * LA branche else de cette condition  if(!setA.contains(a)) est pas couverte
+	 * LA branche else de cette condition  if(!setA.contains(a)) n'est pas couverte
 	 * @throws IOException 
 	 */
 	@Test(expected=NullPointerException.class)
@@ -1920,5 +1926,32 @@ public class AC {
  		toTest.removeItem(val1);
 		assertEquals("Apres un retrait dans une liste de taille 2 ,la taille de liste  doit etre 1 ",3,toTest.getSize());
 	}
+	/**
+	 * supprimer une liste avec une plus grande taille pour iterer le plus possible dans le while
+	 * LA branche else de cette condition  if(!setA.contains(a)) est pas couverte
+	 * @throws IOException 
+	 */
+	@Test
+	public void  OperationParDefaut_WhiteBox() throws IOException{
+		//initiate values
+		ArrayList<Object> val1 = new ArrayList<Object>(Arrays.asList(1,2,3));
+		ArrayList<Object> val2 = new ArrayList<Object>(Arrays.asList(5,8,8));
+
+		//given values for test proposal
+		MyList toTest = new MyListImpl();	
+		ListeChainee suiteChainee= new ListeChaineeImpl();
+		toTest = suiteChainee.build("", val1, val2);
+
+
+		assertEquals("Si on ne choisis pas d'operation dans le contructeur de ListeChainee le dernier element de la liste est celui de val2",val2,toTest.getAt(toTest.getSize()-1));
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
