@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>EC.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">EC (2016-10-17 10:45:20)</a> &gt; <a href="../../index.html" class="el_group">ListeChaineeProject</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">main</a> &gt; <span class="el_source">EC.java</span></div><h1>EC.java</h1><pre class="source lang-java linenums">package main;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>EC.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">EC (Oct 31, 2016 12:23:44 AM)</a> &gt; <a href="../../index.html" class="el_group">ListeChaineeProject</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">main</a> &gt; <span class="el_source">EC.java</span></div><h1>EC.java</h1><pre class="source lang-java linenums">package main;
 
 import static org.junit.Assert.*;
 
@@ -214,8 +214,8 @@ import liste_tp3.MyListImpl;
 		//given values for test proposal
 <span class="fc" id="L215">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
 <span class="fc" id="L216">		MyList toTest = suiteChainee.build(&quot;invalid&quot;, val1, val2);</span>
-<span class="nc" id="L217">		fail(&quot;Specied Operation not supported&quot;);</span>
-<span class="nc" id="L218">	}</span>
+		//pass(&quot;Specied Operation not supported&quot;);
+<span class="fc" id="L218">	}</span>
 	
 	/**
 	 * test de l ajout d'un ensemble a une liste
@@ -403,6 +403,110 @@ import liste_tp3.MyListImpl;
 
 <span class="fc" id="L404">		return true ;</span>
 	}
+	
+	
+	/*--------------------------------------------------------------------------------------------*/
+	//Ici on commence les test Boite Blanche
+	/*--------------------------------------------------------------------------------------------*/
+	
+	/**
+	 * union test pour couvrir le setCalculatorImpl 
+	 * LA branche else de cette condition  if(!setA.contains(a)) est pas couverte
+	 * @throws IOException 
+	 */
+	@Test
+	public void  union01_WhiteBox() throws IOException{
+<span class="fc" id="L419">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(4,1));</span>
+<span class="fc" id="L420">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(1,3));</span>
+		
+<span class="fc" id="L422">		ArrayList&lt;Object&gt; unionVal1Val2 = new ArrayList&lt;Object&gt;(Arrays.asList(4,1,3));</span>
+
+		//given values for test proposal
+<span class="fc" id="L425">		MyList toTest = new MyListImpl();	</span>
+<span class="fc" id="L426">		ListeChainee suiteChainee= new ListeChaineeImpl();</span>
+<span class="fc" id="L427">		toTest = suiteChainee.build(&quot;union&quot;, val1, val2);</span>
+
+		//excepted result 
+<span class="fc" id="L430">		MyList exceptedResult = new MyListImpl();	</span>
+<span class="fc" id="L431">		exceptedResult.add(val1);</span>
+<span class="fc" id="L432">		exceptedResult.add(val2);</span>
+<span class="fc" id="L433">		exceptedResult.add(unionVal1Val2);</span>
+
+<span class="fc" id="L435">		assertTrue(&quot;Val2 contient une valeur de Val1, resultat =  [4,1,3]]&quot;,isMyListAreEquals(exceptedResult,toTest));</span>
+<span class="fc" id="L436">	}</span>
+	
+
+	/**
+	 * union test pour couvrir le removeAt
+	 * La branche de cette condition  if(pos == 0) n'est pas couverte
+	 * @throws IOException 
+	 */
+	@Test
+	public void  removeAt01_WhiteBox() throws IOException{
+		//create list and add some fake data
+<span class="fc" id="L447">		MyList toTest = new MyListImpl();	</span>
+<span class="fc" id="L448">		toTest.add(ensembleTest);</span>
+
+		//remove second item
+<span class="fc" id="L451">		toTest.removeAt(0);</span>
+<span class="fc" id="L452">		System.out.println(&quot;size:&quot;+toTest.getSize());</span>
+<span class="fc" id="L453">		assertEquals(&quot;Apres un retrait de l'element a la position 0 dans une liste de taille 2 ,la taille de liste  doit etre 1 &quot;,0,toTest.getSize());</span>
+<span class="fc" id="L454">	}</span>
+	
+	/**
+	 * union test pour couvrir le removeAt
+	 * la branche à l’intérieur de la boucle while(pos-- &gt; 1) n’est pas couverte
+	 * @throws IOException 
+	 */
+	@Test
+	public void  removeAt02_WhiteBox() throws IOException{
+<span class="fc" id="L463">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(84,-1));</span>
+<span class="fc" id="L464">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(81,-3));</span>
+		//create list and add some fake data
+<span class="fc" id="L466">		MyList toTest = new MyListImpl();	</span>
+<span class="fc" id="L467">		toTest.add(ensembleTest);</span>
+<span class="fc" id="L468">		toTest.add(ensembleTest);</span>
+<span class="fc" id="L469">		toTest.add(val1);</span>
+<span class="fc" id="L470">		toTest.add(val2);</span>
+		//remove second item
+<span class="fc" id="L472">		toTest.removeAt(2);</span>
+<span class="fc" id="L473">		assertEquals(&quot;Apres un retrait dans une liste de taille 4  ,la taille de liste  doit etre 3 &quot;,3,toTest.getSize());</span>
+<span class="fc" id="L474">	}</span>
+	
+	/**
+	 * remove un item dans une liste vide
+	 * une des branches de la condition if(start != null &amp;&amp; start.getContent()==item) n'a pas été couverte
+	 * @throws IOException 
+	 */
+	@Test(expected=NullPointerException.class)
+	public void  removeItem01_WhiteBox() throws IOException{
+		//create list and add some fake data
+<span class="fc" id="L484">		MyList toTest = new MyListImpl();	</span>
+
+		//remove  item qui nexiste pas dans une liste vide
+<span class="nc" id="L487"> 	    toTest.removeItem(ensembleTest);</span>
+<span class="nc" id="L488">	}</span>
+	/**
+	 * supprimer une liste avec une plus grande taille pour iterer le plus possible dans le while
+	 * LA branche else de cette condition  if(!setA.contains(a)) est pas couverte
+	 * @throws IOException 
+	 */
+	@Test
+	public void  removeItem02_WhiteBox() throws IOException{
+<span class="fc" id="L496">		ArrayList&lt;Object&gt; val1 = new ArrayList&lt;Object&gt;(Arrays.asList(84,-1));</span>
+<span class="fc" id="L497">		ArrayList&lt;Object&gt; val2 = new ArrayList&lt;Object&gt;(Arrays.asList(81,-3));</span>
+		
+		//create list and add some fake data
+<span class="fc" id="L500">		MyList toTest = new MyListImpl();	</span>
+<span class="fc" id="L501">		toTest.add(ensembleTest);</span>
+<span class="fc" id="L502">		toTest.add(ensembleTest1);</span>
+<span class="fc" id="L503">		toTest.add(val1);</span>
+<span class="fc" id="L504">		toTest.add(val2);</span>
+
+		//remove  item qui nexiste pas dans une liste vide
+<span class="fc" id="L507"> 		toTest.removeItem(val1);</span>
+<span class="fc" id="L508">		assertEquals(&quot;Apres un retrait dans une liste de taille 2 ,la taille de liste  doit etre 1 &quot;,3,toTest.getSize());</span>
+<span class="fc" id="L509">	}</span>
 
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>EC (2016-10-17 10:45:20)</div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>EC (Oct 31, 2016 12:23:44 AM)</div></body></html>
